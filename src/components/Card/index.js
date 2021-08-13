@@ -5,13 +5,13 @@ import typeBackground from "./typeBackground";
 import api from "../../api/api";
 //Using the styled-components
 const StyledImg = styled.img`
-  height: 75px;
-  width: 75px;
+  height: 200px;
+  width: 200px;
 `;
 
 const StyledDiv = styled.div`
-  height: 150px;
-  width: 150px;
+  height: 280px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
