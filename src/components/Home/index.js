@@ -15,7 +15,7 @@ class Home extends Component {
 
   async componentDidMount() {
     //const { pokemons } = this.state;
-    const { data } = await api.get("pokemon?limit=10"); //898
+    const { data } = await api.get("pokemon?limit=898"); //898
     const apiCall = data.results;
     this.setState({ pokemons: apiCall });
     this.setState({ filteredPokemons: apiCall });
