@@ -3,15 +3,23 @@ import styled from "styled-components";
 
 import typeBackground from "./typeBackground";
 import api from "../../api/api";
+import LoadingImg from "../../assets/images/loading.gif";
+
 //Using the styled-components
+const StyledLoading = styled.img`
+  height: 60px;
+  width: 60px;
+  margin-bottom: 25px;
+`;
+
 const StyledImg = styled.img`
-  height: 75px;
-  width: 75px;
+  height: 200px;
+  width: 200px;
 `;
 
 const StyledDiv = styled.div`
-  height: 150px;
-  width: 150px;
+  height: 280px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,17 +33,16 @@ const StyledDiv = styled.div`
 
 const StyledType = styled.div`
   margin: 5px;
-  padding:3px;
+  padding: 3px;
   font-weight: bold;
-  color: #FFF;
-  border-radius: 15px
+  color: #fff;
+  border-radius: 15px;
 `;
-
 
 class Card extends Component {
   //Creating the necessaring states
   state = {
-    pokemonImg: "",
+    pokemonImg: '',
     pokemonType: "",
     pokemon: [],
   };
@@ -45,19 +52,24 @@ class Card extends Component {
     const { name } = this.props;
     const { data } = await api.get(`pokemon/${name}`);
     this.setState({ pokemon: data });
-    this.setState({ pokemonImg: data.sprites.other["official-artwork"].front_default });
-    this.setState( { pokemonType: (data.types[0].type.name).toLowerCase() } )
+    this.setState({
+      pokemonImg: data.sprites.other["official-artwork"].front_default,
+    });
+    this.setState({ pokemonType: data.types[0].type.name.toLowerCase() });
   }
 
   render() {
-    const { pokemon, pokemonImg, pokemonType } = this.state;
+    const { pokemon, pokemonImg, pokemonType, imgLoading } = this.state;
     return (
-        <StyledDiv>
-        <StyledImg src={pokemonImg} alt="Imagem descritiva do Pokemon" />
-          <h4>{pokemon.name}</h4>
-          <StyledType 
-          style={{backgroundColor: `${typeBackground[pokemonType]}`, }}>{pokemonType}</StyledType>
-        </StyledDiv>
+      <StyledDiv>
+        {pokemonImg != "" ? <StyledImg src={pokemonImg} alt="Imagem descritiva do Pokemon" /> : <StyledLoading src = {LoadingImg}/>}
+        <h4>{pokemon != "" ? pokemon.name : "Loading..."}</h4>
+        <StyledType
+          style={{ backgroundColor: `${typeBackground[pokemonType]}` }}
+        >
+          {pokemonType}
+        </StyledType>
+      </StyledDiv>
     );
   }
 }
