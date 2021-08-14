@@ -1,6 +1,9 @@
+//importing React and library
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+
+//importing components
+import App from './components/App';
 
 ReactDOM.render(
     <App />,
