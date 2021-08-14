@@ -13,7 +13,7 @@ a{
 
 a:hover{
     text-decoration: none;
-    font-size: 150%;
+    font-size: 120%;
     color:yellow;
 }
 
@@ -23,8 +23,7 @@ a:hover{
     width: 92%;
 }
 
-.nav-link{ 
-    font-family: 'Pokemon Solid'; 
+.nav-link{      
     display: flex;   
     align-items: center;
     justify-content: space-around;
@@ -33,9 +32,9 @@ a:hover{
 }
 
 h1{
-    margin-top: -80px;
+    margin-top: -150px;
     font-size: 70px;    
 }
 h2{
-    margin-top: -150px;    
+    margin-top: -200px;    
 }

@@ -2,7 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 import Navbackground from '../../assets/images/navbackground.gif'
+import  styled  from "styled-components";
 
+const Titulo = styled.h1`
+    font-family: 'Pokemon Solid';
+`;
+
+const About = styled.h2`
+font-family: 'Pokemon Solid';
+`;
 
 const Navbar = () => {
     return (
@@ -12,8 +20,8 @@ const Navbar = () => {
         </nav>
        
         <div className='nav-link'>
-            <Link to='/home'><h1>ReactDex</h1></Link>            
-            <Link to='/about'><h2>About us</h2></Link> 
+            <Link to='/home'><Titulo>ReactDex</Titulo></Link>            
+            <Link to='/about'><About>About us</About></Link> 
         </div>
         </>
     )        
