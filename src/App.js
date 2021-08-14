@@ -1,8 +1,11 @@
+import Navbar from "./components/Navbar";
+import './components/Navbar.css';
+
+
+
 function App() {
   return (
-    <div >
-      <h2>ReactDex</h2>
-    </div>
+    <Navbar/>
   );
 }
 
