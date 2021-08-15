@@ -1,43 +1,13 @@
+//importing react and library
 import React, { Component } from "react";
-import styled from "styled-components";
 
-import typeBackground from "./typeBackground";
+// importing API
 import api from "../../api/api";
+
+// importing StyledComponents and IMG
+import { StyledLoading, StyledImg, StyledDiv, StyledType } from "../UI";
 import LoadingImg from "../../assets/images/loading.gif";
-
-//Using the styled-components
-const StyledLoading = styled.img`
-  height: 60px;
-  width: 60px;
-  margin-bottom: 25px;
-`;
-
-const StyledImg = styled.img`
-  height: 200px;
-  width: 200px;
-`;
-
-const StyledDiv = styled.div`
-  height: 280px;
-  width: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2px;
-  margin: 5px;
-  align-content: center;
-  border: 1px solid black;
-  border-radius: 4px;
-`;
-
-const StyledType = styled.div`
-  margin: 5px;
-  padding: 3px;
-  font-weight: bold;
-  color: #fff;
-  border-radius: 15px;
-`;
+import typeBackground from "./typeBackground";
 
 class Card extends Component {
   //Creating the necessaring states
@@ -47,7 +17,7 @@ class Card extends Component {
     pokemon: [],
   };
 
-  //Calling the API
+  //Calling the API and populating the states 
   async componentDidMount() {
     const { name } = this.props;
     const { data } = await api.get(`pokemon/${name}`);
@@ -59,11 +29,11 @@ class Card extends Component {
   }
 
   render() {
-    const { pokemon, pokemonImg, pokemonType, imgLoading } = this.state;
+    const { pokemon, pokemonImg, pokemonType } = this.state;
     return (
       <StyledDiv>
-        {pokemonImg != "" ? <StyledImg src={pokemonImg} alt="Imagem descritiva do Pokemon" /> : <StyledLoading src = {LoadingImg}/>}
-        <h4>{pokemon != "" ? pokemon.name : "Loading..."}</h4>
+        {pokemonImg !== "" ? <StyledImg src={pokemonImg} alt="Imagem descritiva do Pokemon" /> : <StyledLoading src = {LoadingImg}/>}
+        <h4>{pokemon != "" ? pokemon.name : `Loading...`}</h4>
         <StyledType
           style={{ backgroundColor: `${typeBackground[pokemonType]}` }}
         >

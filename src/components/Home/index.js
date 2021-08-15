@@ -1,31 +1,33 @@
-//importing react and library
+//importing react
 import React, { Component } from "react";
-import { Grid, TextField } from "@material-ui/core";
 // importing Components
 import Card from "../Card/index.js";
+//importing api
 import api from "../../api/api";
-// importing styled-components
-import { Container } from "@material-ui/core";
+// importing styled-components / materialUI
+import { Container, Grid, TextField } from "@material-ui/core";
 
 class Home extends Component {
-  state = {
-    pokemons: [],
-    filteredPokemons: [],
+
+  handleChanges = (input) => {
+    const { pokemons } = this.state;
+    const { value } = input.target;
+    const filtered = pokemons.filter((pokemon) => {
+      return pokemon.name.toLowerCase().includes(value.toLowerCase());
+    });
+    this.setState({ filteredPokemons: filtered });
   };
 
   async componentDidMount() {
-    //const { pokemons } = this.state;
-    const { data } = await api.get("pokemon?limit=898"); //898
+    const { data } = await api.get("pokemon?limit=20"); //898
     const apiCall = data.results;
     this.setState({ pokemons: apiCall });
     this.setState({ filteredPokemons: apiCall });
   }
 
-  handleChanges = (input) => {
-    const filtered = this.state.pokemons.filter((pokemon) => {
-      return pokemon.name.toLowerCase().includes(input.target.value.toLowerCase());
-    });
-    this.setState({ filteredPokemons: filtered });
+  state = {
+    pokemons: [],
+    filteredPokemons: [],
   };
 
   render() {
@@ -34,11 +36,9 @@ class Home extends Component {
       <>
         <Container>
           <TextField
-            id="outlined-basic"
-            label="Pesquiser Pokemon"
-            variant="outlined"
-            margin="normal"
             fullWidth
+            margin="normal"
+            label="Serach Pokemon"
             onChange={(e) => this.handleChanges(e)}
           />
           <Grid
@@ -46,8 +46,9 @@ class Home extends Component {
             direction="row"
             justifyContent="center"
             alignItems="center"
+            fixed
           >
-            {filteredPokemons.map((pokemon) => (
+            {filteredPokemons.map((pokemon, index) => (
               <Card key={pokemon.name} name={pokemon.name} />
             ))}
           </Grid>

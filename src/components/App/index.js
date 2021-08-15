@@ -5,14 +5,13 @@ import React from "react";
 import GlobalStyle from "../GlobalStyle";
 import Home from "../Home";
 
-
-function App(){
+function App() {
   return (
     <>
-    <GlobalStyle />
-    <Home />
+      <GlobalStyle />
+      <Home />
     </>
-  )
+  );
 }
 
 export default App;
