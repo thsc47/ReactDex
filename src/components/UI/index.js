@@ -1,6 +1,20 @@
 //importing styled-components
 import styled from "styled-components";
 
+//Components from App
+export const BtnTheme = styled.button`
+  position: absolute;
+  top: 2vh;
+  right: 120px;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+`;
+export const StyledIcon = styled.img`
+  height: 25px;
+  width: 25px;
+`;
+
 //Components from Card
 export const StyledLoading = styled.img`
   height: 60px;
@@ -14,8 +28,8 @@ export const StyledImg = styled.img`
 `;
 
 export const StyledDiv = styled.div`
-  background-color: ${ ({theme}) => theme.inside};
-  color: ${ ({theme}) => theme.text};
+  background-color: ${({ theme }) => theme.inside};
+  color: ${({ theme }) => theme.text};
   height: 280px;
   width: 200px;
   display: flex;
@@ -34,24 +48,26 @@ export const StyledType = styled.div`
   padding: 3px;
   font-weight: bold;
   color: #fff;
+  border: 1px solid #f1f1f1;
   border-radius: 15px;
 `;
 
-// Components from Home (Not Using)
-export const StyledContainer = styled.section`
-  width:100%;
-  height:100%;
-  background-color: ${({ theme }) => theme.body};
+// Components from Home
+export const StyledLabel = styled.span`
+  font-size: 14px;
+  color: ${({ theme }) => theme.text};
 `;
 
 export const StyledTextField = styled.input`
-  width:100%;
-  height:25px;
-  background: rgba(0, 0, 0, 0.4);
-  border: 0;
-  border-radius: 5px;
-  margin: 10px 10px 10px 10px;
+  width: 100%;
+  height: 25px;
+  background-color: ${({ theme }) => theme.body};
+  border: none;
+  border-bottom: 2px solid ${({ theme }) => theme.text};
+  border-radius: 4px;
   placeholder: "Search Pokemon";
   color: ${({ theme }) => theme.text};
-  background-color: ${({ theme }) => theme.inside}
+  :focus {
+    border-bottom: 2px solid ${({ theme }) => theme.text};
+  }
 `;

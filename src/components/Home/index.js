@@ -5,10 +5,10 @@ import Card from "../Card/index.js";
 //importing api
 import api from "../../api/api";
 // importing styled-components / materialUI
-import { Container, Grid, TextField } from "@material-ui/core";
+import { StyledLabel, StyledTextField } from "../UI/index.js";
+import { Container, Grid } from "@material-ui/core";
 
 class Home extends Component {
-
   handleChanges = (input) => {
     const { pokemons } = this.state;
     const { value } = input.target;
@@ -19,7 +19,7 @@ class Home extends Component {
   };
 
   async componentDidMount() {
-    const { data } = await api.get("pokemon?limit=20"); //898
+    const { data } = await api.get("pokemon?limit=898"); //898
     const apiCall = data.results;
     this.setState({ pokemons: apiCall });
     this.setState({ filteredPokemons: apiCall });
@@ -32,13 +32,12 @@ class Home extends Component {
 
   render() {
     const { filteredPokemons } = this.state;
+
     return (
       <>
         <Container>
-          <TextField
-            fullWidth
-            margin="normal"
-            label="Serach Pokemon"
+          <StyledLabel>Search Pokemon</StyledLabel>
+          <StyledTextField
             onChange={(e) => this.handleChanges(e)}
           />
           <Grid
@@ -48,7 +47,7 @@ class Home extends Component {
             alignItems="center"
             fixed
           >
-            {filteredPokemons.map((pokemon, index) => (
+            {filteredPokemons.map((pokemon) => (
               <Card key={pokemon.name} name={pokemon.name} />
             ))}
           </Grid>
