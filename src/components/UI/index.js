@@ -1,6 +1,47 @@
 //importing styled-components
 import styled from "styled-components";
 
+//Components from Navbar
+export const StyledNav = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Pokemon Solid";
+`;
+
+export const StyledNavLink = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-left: 300px;
+  margin-bottom: 5px
+`;
+
+export const StyledNavBackground = styled.img`
+  height: 180px;
+  width: 92%;
+`;
+
+export const StyledTitle = styled.h1`
+  font-family: "Pokemon Solid";
+  margin-top: -150px;
+  font-size: 70px;
+`;
+
+export const StyledAbout = styled.h2`
+  font-family: "Pokemon Solid";
+  margin-top: -200px;
+`;
+
+export const StyledLink = styled.a`
+  text-decoration: none;
+  color: blue;
+  hover {
+  text-decoration: none;
+  font-size: 120%;
+  color: yellow;
+`;
+
 //Components from App
 export const BtnTheme = styled.button`
   position: absolute;

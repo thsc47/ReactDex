@@ -27,5 +27,5 @@ function App() {
       <Home />
     </ThemeProvider>
   );
-
+}
 export default App;
