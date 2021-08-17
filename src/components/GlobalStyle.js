@@ -1,9 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-.nav-link{
-    font-family: 'Pokemon Solid';
-}  
  
 *{
        box-sizing: border-box;
