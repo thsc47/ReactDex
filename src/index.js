@@ -1,11 +1,14 @@
 //importing React and library
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-//importing components
 import App from './components/App';
+import { BrowserRouter as Router } from 'react-router-dom'
+
 
 ReactDOM.render(
-    <App />,
+  
+    <Router>
+      <App />
+    </Router>,   
   document.getElementById('root')
 );
