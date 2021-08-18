@@ -2,10 +2,10 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
-    body{
-        background-color: ${ ({theme}) => theme.body };
+body{
+        background-color: ${({ theme }) => theme.body};
         
-    }
+}
     
 *{
 
@@ -21,8 +21,8 @@ const GlobalStyle = createGlobalStyle`
     box-shadow: 0 0 0 0;
     border: 0 none;
     outline: 0;
-} 
-    
-    `;
+}
+ 
+`;
 
 export default GlobalStyle;

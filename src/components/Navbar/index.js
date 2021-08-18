@@ -1,7 +1,8 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbackground from "../../assets/images/navbackground.gif";
-import { StyledNav, StyledNavLink, StyledNavBackground, StyledTitle, StyledAbout, StyledLink,  } from "../UI";
+import { StyledNav, StyledNavLink, StyledNavBackground, StyledNavTitle, StyledAbout, StyledLink,  } from "../UI";
 
 const Navbar = () => {
   return (
@@ -12,7 +13,7 @@ const Navbar = () => {
 
       <StyledNavLink>
         <StyledLink to="/home">
-          <StyledTitle>ReactDex</StyledTitle>
+          <StyledNavTitle>ReactDex</StyledNavTitle>
         </StyledLink>
         <StyledLink to="/about">
           <StyledAbout>About us</StyledAbout>
