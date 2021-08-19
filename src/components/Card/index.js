@@ -7,7 +7,7 @@ import api from "../../api/api";
 // importing StyledComponents and IMG
 import { StyledLoading, StyledImg, StyledDiv, StyledType } from "../UI";
 import LoadingImg from "../../assets/images/loading.gif";
-import typeBackground from "./typeBackground";
+import typeBackground from "../UI/typeBackground";
 
 class Card extends Component {
   handeClick = (e) => {
