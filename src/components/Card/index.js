@@ -35,7 +35,7 @@ class Card extends Component {
   render() {
     const { pokemon, pokemonImg, pokemonType } = this.state;
     return (
-      <Link to = {`/details/${pokemon.name}`}>
+      <Link href = {`/details/${pokemon.name}`}>
       <StyledDiv className={pokemon.name} >
         {pokemonImg !== "" ? (
           <StyledImg

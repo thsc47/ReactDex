@@ -15,18 +15,21 @@ import {
   InfoCard,
   CardContainer,
   InfoLabelDisplay,
+  InfoContainerBolinho,
 } from "../components/UI";
 import { Container, Grid } from "@material-ui/core";
 import typeBackground from "../components/UI/typeBackground.js";
 import { Bar } from "react-chartjs-2";
+import Card from "../components/Card";
 
 class PokemonDetails extends Component {
   state = {
-    attribute: [],
     pokemon: [],
     pokemonImg: "",
     pokemonType: [],
     abilities: [],
+    attribute: [],
+    evoChain: {},
   };
 
   async componentDidMount() {
@@ -48,18 +51,27 @@ class PokemonDetails extends Component {
     const evolutionChain = await api.get(
       `evolution-chain/${evolutionChainId}/`
     );
-    let stage1, stage2, stage3 = null;
+    let stage1,
+      stage2,
+      stage3 = null;
     try {
       stage1 = evolutionChain.data.chain.species.name;
-      stage2 = evolutionChain.data.chain.evolves_to[0].species.name;
-      stage3 = evolutionChain.data.chain.evolves_to[0].evolves_to[0].species.name;
-      evoChain.push(stage1, stage2, stage3);
     } catch (e) {
       stage1 = null;
+    }
+    try {
+      stage2 = evolutionChain.data.chain.evolves_to[0].species.name;
+    } catch (error) {
       stage2 = null;
+    }
+    try {
+      stage3 =
+        evolutionChain.data.chain.evolves_to[0].evolves_to[0].species.name;
+    } catch (e) {
       stage3 = null;
     }
-    console.log(evoChain);
+    evoChain.push(stage1, stage2, stage3);
+    const filteredEvoChain = evoChain.filter((pokemon) => pokemon !== null);
     //Populando os states
     this.setState({
       pokemon: data,
@@ -67,14 +79,15 @@ class PokemonDetails extends Component {
       pokemonType: data.types,
       abilities: data.abilities,
       attribute: chart,
+      evoChain: filteredEvoChain,
     });
   }
   render() {
-    const { pokemon, pokemonImg, pokemonType, abilities, attribute } =
+    const { pokemon, pokemonImg, pokemonType, abilities, attribute, evoChain } =
       this.state;
     return (
       <Container>
-        {/* {console.log(pokemon)} */}
+        { console.log("oi") }
         <StyledTitle>{this.props.match.params.name}</StyledTitle>
         <InfoType>
           {pokemonType &&
@@ -122,7 +135,6 @@ class PokemonDetails extends Component {
               </CardContainer>
             </InfoContainer>
           </Grid>
-
           <Bar
             data={{
               labels: [
@@ -154,7 +166,15 @@ class PokemonDetails extends Component {
               beginAtZero: true,
             }}
           />
-
+          <InfoContainer>
+            <StyledContainerTitle>Evolution Chain</StyledContainerTitle>
+            <CardContainer>
+              {evoChain.length > 1 &&
+                evoChain.map((pokemon) => (
+                  <Card key={pokemon} name={pokemon} />
+                ))}
+            </CardContainer>
+          </InfoContainer>
         </Grid>
       </Container>
     );
