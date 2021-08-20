@@ -30,10 +30,37 @@ class PokemonDetails extends Component {
   };
 
   async componentDidMount() {
+    const evoChain = [];
     const { name } = this.props.match.params;
+
+    //Chamando a API com os detalhes genericos
     const { data } = await api.get(`pokemon/${name}`);
+    //Populando a array de status
     const chart = data.stats.map((attribute) => parseInt(attribute.base_stat));
-    console.log(chart);
+
+    //Chamando a API com os detalhes complexos
+    const pokemonSpecies = await api.get(`pokemon-species/${name}/`);
+
+    //Fazendo o caminho até a árvore de evolução
+    const evolutionChainId = pokemonSpecies.data.evolution_chain.url
+      .slice(-5)
+      .replace(/([^\d])+/gim, "");
+    const evolutionChain = await api.get(
+      `evolution-chain/${evolutionChainId}/`
+    );
+    let stage1, stage2, stage3 = null;
+    try {
+      stage1 = evolutionChain.data.chain.species.name;
+      stage2 = evolutionChain.data.chain.evolves_to[0].species.name;
+      stage3 = evolutionChain.data.chain.evolves_to[0].evolves_to[0].species.name;
+      evoChain.push(stage1, stage2, stage3);
+    } catch (e) {
+      stage1 = null;
+      stage2 = null;
+      stage3 = null;
+    }
+    console.log(evoChain);
+    //Populando os states
     this.setState({
       pokemon: data,
       pokemonImg: data.sprites.other["official-artwork"].front_default,
@@ -47,7 +74,7 @@ class PokemonDetails extends Component {
       this.state;
     return (
       <Container>
-        {console.log(pokemon.stats)}
+        {/* {console.log(pokemon)} */}
         <StyledTitle>{this.props.match.params.name}</StyledTitle>
         <InfoType>
           {pokemonType &&
@@ -110,7 +137,7 @@ class PokemonDetails extends Component {
                 {
                   label: `Stats`,
                   data: attribute,
-                  backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+                  backgroundColor: ["rgba(255, 99, 132)"],
                   borderWidth: 1,
                 },
               ],
@@ -127,6 +154,7 @@ class PokemonDetails extends Component {
               beginAtZero: true,
             }}
           />
+
         </Grid>
       </Container>
     );

@@ -214,8 +214,8 @@ export const InfoLabel = styled.span`
 
 export const InfoLabelDisplay = styled.span`
   color: ${({ theme }) => theme.text};
-  font-size: 28px;
-  line-height: 60px;
+  font-size: 24px;
+  text-align: center;
 `;
 
 
