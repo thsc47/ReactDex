@@ -173,6 +173,9 @@ export const InfoContainer = styled.section`
   height: 460px;
   width: 100%;
   padding: 15px;
+  @media(max-width: 600px){
+    height: 100%;
+  }
 `;
 
 export const StyledContainerTitle = styled.h1`
@@ -188,6 +191,13 @@ export const CardContainer = styled.section`
   justify-content: space-around;
   align-itens: center;
   align-content: center;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
 `;
 
 export const InfoCard = styled.section`
@@ -217,9 +227,3 @@ export const InfoLabelDisplay = styled.span`
   font-size: 24px;
   text-align: center;
 `;
-
-
-
-
-
-

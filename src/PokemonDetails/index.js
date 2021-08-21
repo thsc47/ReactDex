@@ -1,7 +1,7 @@
 //importing React and library
 import React, { Component } from "react";
 //importing API
-import api from "../api/api";
+import APIHandler from "../APIHandler";
 //importing Styled Components and Material UI support
 import {
   StyledTitle,
@@ -15,12 +15,15 @@ import {
   InfoCard,
   CardContainer,
   InfoLabelDisplay,
-  InfoContainerBolinho,
 } from "../components/UI";
 import { Container, Grid } from "@material-ui/core";
 import typeBackground from "../components/UI/typeBackground.js";
 import { Bar } from "react-chartjs-2";
+//Importing Components
 import Card from "../components/Card";
+//Importing Support Functions
+import getEvolutionChain from "./evolutionChain";
+const API = new APIHandler("https://pokeapi.co/api/v2/");
 
 class PokemonDetails extends Component {
   state = {
@@ -33,62 +36,49 @@ class PokemonDetails extends Component {
   };
 
   async componentDidMount() {
-    const evoChain = [];
+    const API = new APIHandler("https://pokeapi.co/api/v2/");
     const { name } = this.props.match.params;
+    const evoChain = await getEvolutionChain(name);
+    const { data } = await API.getOnePokemons(`${name}`);
 
-    //Chamando a API com os detalhes genericos
-    const { data } = await api.get(`pokemon/${name}`);
-    //Populando a array de status
     const chart = data.stats.map((attribute) => parseInt(attribute.base_stat));
 
-    //Chamando a API com os detalhes complexos
-    const pokemonSpecies = await api.get(`pokemon-species/${name}/`);
-
-    //Fazendo o caminho até a árvore de evolução
-    const evolutionChainId = pokemonSpecies.data.evolution_chain.url
-      .slice(-5)
-      .replace(/([^\d])+/gim, "");
-    const evolutionChain = await api.get(
-      `evolution-chain/${evolutionChainId}/`
-    );
-    let stage1,
-      stage2,
-      stage3 = null;
-    try {
-      stage1 = evolutionChain.data.chain.species.name;
-    } catch (e) {
-      stage1 = null;
-    }
-    try {
-      stage2 = evolutionChain.data.chain.evolves_to[0].species.name;
-    } catch (error) {
-      stage2 = null;
-    }
-    try {
-      stage3 =
-        evolutionChain.data.chain.evolves_to[0].evolves_to[0].species.name;
-    } catch (e) {
-      stage3 = null;
-    }
-    evoChain.push(stage1, stage2, stage3);
-    const filteredEvoChain = evoChain.filter((pokemon) => pokemon !== null);
-    //Populando os states
     this.setState({
       pokemon: data,
       pokemonImg: data.sprites.other["official-artwork"].front_default,
       pokemonType: data.types,
       abilities: data.abilities,
       attribute: chart,
-      evoChain: filteredEvoChain,
+      evoChain: evoChain,
     });
   }
+
+  async componentDidUpdate(prevProps) {
+    const { name: oldPokemon } = prevProps.match.params;
+    const { name: newPokemon } = this.props.match.params;
+    if (oldPokemon !== newPokemon) {
+      const { data } = await API.getOnePokemons(`${newPokemon}`);
+      const chart = data.stats.map((attribute) =>
+        parseInt(attribute.base_stat)
+      );
+      this.setState({
+        pokemon: data,
+        pokemonImg: data.sprites.other["official-artwork"].front_default,
+        pokemonType: data.types,
+        abilities: data.abilities,
+        attribute: chart,
+      });
+    }
+  }
+
   render() {
     const { pokemon, pokemonImg, pokemonType, abilities, attribute, evoChain } =
       this.state;
+    const { name } = this.props.match.params;
+    const capitalizePokemonName = name[0].toUpperCase() + name.slice(1);
     return (
       <Container>
-        { console.log("oi") }
-        <StyledTitle>{this.props.match.params.name}</StyledTitle>
+        <StyledTitle>{capitalizePokemonName}</StyledTitle>
         <InfoType>
           {pokemonType &&
             pokemonType.map((pokemon) => (
@@ -103,29 +93,45 @@ class PokemonDetails extends Component {
             ))}
         </InfoType>
         <Grid container justifyContent="flex-start" direction="row" spacing={0}>
-          <Grid item xs={5}>
+          <Grid item md={5} xs={12}>
             <ImgContainer>
               <StyledImd420 src={pokemonImg} />
             </ImgContainer>
           </Grid>
-          <Grid item xs={7}>
+          <Grid item md={7} xs={12}>
             <InfoContainer>
-              <StyledContainerTitle>Basic Information</StyledContainerTitle>
+              <StyledContainerTitle>Basic Information:</StyledContainerTitle>
               <CardContainer>
                 <InfoCard>
                   <InfoLabel>Heigh:</InfoLabel>
-                  <InfoLabelDisplay>{pokemon.height / 10} m </InfoLabelDisplay>
+                  {pokemon.height > 0 ? (
+                    <InfoLabelDisplay>
+                      {pokemon.height / 10} m{" "}
+                    </InfoLabelDisplay>
+                  ) : (
+                    <InfoLabelDisplay> - </InfoLabelDisplay>
+                  )}
                 </InfoCard>
                 <InfoCard>
                   <InfoLabel>Weight:</InfoLabel>
-                  <InfoLabelDisplay>{pokemon.weight / 10} kg </InfoLabelDisplay>
+                  {pokemon.weight > 0 ? (
+                    <InfoLabelDisplay>
+                      {pokemon.weight / 10} kg{" "}
+                    </InfoLabelDisplay>
+                  ) : (
+                    <InfoLabelDisplay> - </InfoLabelDisplay>
+                  )}
                 </InfoCard>
                 <InfoCard>
                   <InfoLabel>ID:</InfoLabel>
-                  <InfoLabelDisplay>{pokemon.id} </InfoLabelDisplay>
+                  {pokemon.id > 0 ? (
+                    <InfoLabelDisplay>{pokemon.id} </InfoLabelDisplay>
+                  ) : (
+                    <InfoLabelDisplay> - </InfoLabelDisplay>
+                  )}
                 </InfoCard>
               </CardContainer>
-              <StyledContainerTitle>Abilities</StyledContainerTitle>
+              <StyledContainerTitle>Abilities:</StyledContainerTitle>
               <CardContainer>
                 {abilities.map((pokemon) => (
                   <InfoCard key={pokemon.ability.name}>
@@ -135,15 +141,16 @@ class PokemonDetails extends Component {
               </CardContainer>
             </InfoContainer>
           </Grid>
+
           <Bar
             data={{
               labels: [
-                "hp",
-                "attack",
-                "defense",
-                "special-attack",
-                "special-defense",
-                "speed",
+                "Hp",
+                "Attack",
+                "Defense",
+                "Special-attack",
+                "Special-defense",
+                "Speed",
               ],
               datasets: [
                 {
@@ -154,8 +161,8 @@ class PokemonDetails extends Component {
                 },
               ],
             }}
-            height={100}
-            width={200}
+            height={25}
+            width={50}
             options={{
               scales: {
                 y: {
@@ -169,10 +176,13 @@ class PokemonDetails extends Component {
           <InfoContainer>
             <StyledContainerTitle>Evolution Chain</StyledContainerTitle>
             <CardContainer>
-              {evoChain.length > 1 &&
-                evoChain.map((pokemon) => (
-                  <Card key={pokemon} name={pokemon} />
-                ))}
+              {evoChain.length > 1 ? (
+                evoChain.map((pokemon) => <Card key={pokemon} name={pokemon} />)
+              ) : (
+                <InfoLabel style={{ lineHeight: "350px" }}>
+                  {capitalizePokemonName} doesn't evolve.
+                </InfoLabel>
+              )}
             </CardContainer>
           </InfoContainer>
         </Grid>

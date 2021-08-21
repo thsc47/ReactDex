@@ -2,18 +2,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // importing API
-import api from "../../api/api";
-
+import APIHandler from "../../APIHandler"
 // importing StyledComponents and IMG
 import { StyledLoading, StyledImg, StyledDiv, StyledType } from "../UI";
 import LoadingImg from "../../assets/images/loading.gif";
 import typeBackground from "../UI/typeBackground";
 
 class Card extends Component {
-  handeClick = (e) => {
-    console.log(e);
-  };
-
   //Creating the necessaring states
   state = {
     pokemonImg: "",
@@ -24,18 +19,22 @@ class Card extends Component {
   //Calling the API and populating the states
   async componentDidMount() {
     const { name } = this.props;
-    const { data } = await api.get(`pokemon/${name}`);
+    const API = new APIHandler("https://pokeapi.co/api/v2/")
+    const { data } = await API.getOnePokemons(`${name}`);
     this.setState({
       pokemon: data,
       pokemonImg: data.sprites.other["official-artwork"].front_default,
       pokemonType: data.types[0].type.name.toLowerCase(),
+      pokemonName: data.name,
     });
   }
 
   render() {
     const { pokemon, pokemonImg, pokemonType } = this.state;
+    const PokemonName = pokemon.name
+    //const capitalizePokemonName = PokemonName[0].toUpperCase() + pokemon.name.slice(1) 
     return (
-      <Link href = {`/details/${pokemon.name}`}>
+      <Link to = {`/details/${pokemon.name}`}>
       <StyledDiv className={pokemon.name} >
         {pokemonImg !== "" ? (
           <StyledImg
@@ -46,7 +45,7 @@ class Card extends Component {
         ) : (
           <StyledLoading src={LoadingImg} />
         )}
-        <h4>{pokemon != "" ? pokemon.name : `Loading...`}</h4>
+        <h4>{pokemon != "" ? PokemonName[0].toUpperCase()+PokemonName.slice(1) : `Loading...`}</h4>
         <StyledType
           className={pokemon.name}
           style={{ backgroundColor: `${typeBackground[pokemonType]}` }}

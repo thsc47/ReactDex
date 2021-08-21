@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import Navbackground from "../../assets/images/navbackground.gif";
 import { StyledNav, StyledNavLink, StyledNavBackground, StyledNavTitle, StyledAbout, StyledLink,  } from "../UI";
 
