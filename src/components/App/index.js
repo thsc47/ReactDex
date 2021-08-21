@@ -10,7 +10,7 @@ import GlobalStyle from "../GlobalStyle";
 import { BtnTheme } from "../UI";
 import ThemeSwitcher from "../ThemeSwitcher";
 import Navbar from '../Navbar';
-import Footer from '../Footer'
+import Footer from '../Footer';
 import Home from "../Home";
 import PokemonDetails from "../../PokemonDetails";
 
@@ -31,8 +31,9 @@ function App() {
         <Switch>
           <Route path = "/" component = {Home} exact />
           <Route path = "/details" component = {Home} exact />
-          <Route path = "/details/:name" component = {PokemonDetails} />
+          <Route path = "/details/:name" component = {PokemonDetails} />          
         </Switch>
+        < Footer />
       </ThemeProvider>
   );
 }
