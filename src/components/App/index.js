@@ -11,7 +11,7 @@ import { BtnTheme } from "../UI";
 import ThemeSwitcher from "../ThemeSwitcher";
 import Navbar from "../Navbar"
 import Home from "../Home";
-import PokemonDetails from "../../PokemonDetails";
+import PokemonDetails from "../PokemonDetails";
 
 function App() {
   const [theme, setTheme] = useState(true);

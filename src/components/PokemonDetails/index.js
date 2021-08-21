@@ -1,7 +1,7 @@
 //importing React and library
 import React, { Component } from "react";
 //importing API
-import APIHandler from "../APIHandler";
+import APIHandler from "../../APIHandler";
 //importing Styled Components and Material UI support
 import {
   StyledTitle,
@@ -15,12 +15,12 @@ import {
   InfoCard,
   CardContainer,
   InfoLabelDisplay,
-} from "../components/UI";
+} from "../UI";
 import { Container, Grid } from "@material-ui/core";
-import typeBackground from "../components/UI/typeBackground.js";
+import typeBackground from "../UI/typeBackground.js";
 import { Bar } from "react-chartjs-2";
 //Importing Components
-import Card from "../components/Card";
+import Card from "../Card";
 //Importing Support Functions
 import getEvolutionChain from "./evolutionChain";
 const API = new APIHandler("https://pokeapi.co/api/v2/");
