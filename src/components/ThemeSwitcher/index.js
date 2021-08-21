@@ -6,4 +6,8 @@ import { StyledIcon } from '../UI';
 const light = <StyledIcon src={ThemeOn} alt = "Light Theme"/>
 const dark = <StyledIcon src={ThemeOff} alt = "Dark Theme"/>
 
-export default ({ theme }) => (theme ? dark : light);
+function themeChecker( {theme} ) {
+    return theme ? dark : light;
+}
+
+export default themeChecker
