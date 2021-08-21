@@ -3,7 +3,7 @@ import React, { Component } from "react";
 // importing Components
 import Card from "../Card/index.js";
 //importing api
-import api from "../../api/api";
+import APIHandler from "../../APIHandler";
 // importing styled-components / materialUI
 import { StyledLabel, StyledTextField } from "../UI/index.js";
 import { Container, Grid } from "@material-ui/core";
@@ -19,10 +19,9 @@ class Home extends Component {
   };
 
   async componentDidMount() {
-    const { data } = await api.get("pokemon?limit=898"); //898
-    const apiCall = data.results;
-    this.setState({ pokemons: apiCall });
-    this.setState({ filteredPokemons: apiCall });
+    const API = new APIHandler("https://pokeapi.co/api/v2/"); 
+    const { data } = await API.getAllPokemons(); 
+    this.setState({ pokemons: data.results, filteredPokemons: data.results });
   }
 
   state = {

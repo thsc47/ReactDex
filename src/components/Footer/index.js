@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom";
 import './Footer.css'
 import pokeapi from '../../assets/images/pokeapi.png'
 import heroku from '../../assets/images/heroku.png'
