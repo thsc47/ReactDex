@@ -8,6 +8,7 @@ import GlobalStyle from "../GlobalStyle";
 import { BtnTheme } from "../UI";
 import ThemeSwitcher from "../ThemeSwitcher";
 import Navbar from '../Navbar';
+import Footer from '../Footer'
 import Home from "../Home";
 
 function App() {
@@ -23,8 +24,9 @@ function App() {
       <BtnTheme onClick={toggleTheme}>
         <ThemeSwitcher theme={theme}/>
       </BtnTheme>
-      <Navbar />
+      <Navbar />      
       <Home />
+      <Footer />
     </ThemeProvider>
   );
 }

@@ -1,0 +1,16 @@
+.footer{
+  padding: 20px;
+  background: lightgray;  
+}
+
+.icons{
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;    
+    padding-top: 50px;
+}
+
+img{
+    width: 100px;
+    height: 50px;
+}
