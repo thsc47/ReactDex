@@ -2,53 +2,56 @@
 import styled from "styled-components";
 
 //Components from Navbar
-export const StyledNav = styled.nav`
+export const Header = styled.header`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-family: "Pokemon Solid";
+  padding: 30px 10%;
+  background-color: #d01e36;
+  margin-bottom:5px;
 `;
 
-export const StyledNavBackground = styled.img`
-  height: 180px;
-  width: 92%;
+export const Logo = styled.img`
+  cursor: pointer;
+  width:179px;
+  height:48px;
 `;
 
-export const StyledNavLink = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-left: 300px;
-  margin-bottom: 5px;
-`;
-
-export const StyledLink = styled.a`
-  text-decoration: none;
-  color: blue;
-  ${
-    "" /* :hover {
-  text-decoration: none;
-  font-size: 120%;
-  color: yellow; */
+export const NavLink = styled.ul`
+  list-style: none;
+  li {
+    display: inline-block;
+    padding: 0px 20px;
+  }
+  li a {
+    color:#fff;
+  }
+  li a {
+    transition: all 0.3s ease 0s;
+  }
+  li a:hover {
+    color: #000;
   }
 `;
 
-export const StyledNavTitle = styled.h1`
-  font-family: "Pokemon Solid";
-  margin-top: -150px;
-  font-size: 70px;
-`;
-
-export const StyledAbout = styled.h2`
-  font-family: "Pokemon Solid";
-  margin-top: -200px;
+export const PartyButton = styled.button`
+  padding: 9px 25px;
+  background-color: rgba(0, 136, 169, 1);
+  color:#fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  :hover {
+    background-color: rgba(0, 136, 169, 0.8);
+  }
 `;
 
 //Components from App
 export const BtnTheme = styled.button`
   position: absolute;
-  top: 2vh;
-  right: 120px;
+  top: 8vh;
+  right: 100px;
   background-color: inherit;
   border: none;
   cursor: pointer;
@@ -106,6 +109,7 @@ export const StyledLabel = styled.span`
 export const StyledTextField = styled.input`
   width: 100%;
   height: 25px;
+  margin-bottom:5px;
   background-color: ${({ theme }) => theme.body};
   border: none;
   border-bottom: 2px solid ${({ theme }) => theme.text};
@@ -172,9 +176,9 @@ export const InfoContainer = styled.section`
   color: ${({ theme }) => theme.text};
   height: 460px;
   width: 100%;
-  margin-top:10px;
+  margin-top: 10px;
   padding: 15px;
-  @media(max-width: 600px){
+  @media (max-width: 600px) {
     height: 100%;
   }
 `;
@@ -228,3 +232,46 @@ export const InfoLabelDisplay = styled.span`
   font-size: 24px;
   text-align: center;
 `;
+
+//backup Navbar
+// export const StyledNav = styled.nav`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   font-family: "Pokemon Solid";
+// `;
+
+// export const StyledNavBackground = styled.img`
+//   height: 180px;
+//   width: 92%;
+// `;
+
+// export const StyledNavLink = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-around;
+//   margin-left: 300px;
+//   margin-bottom: 5px;
+// `;
+
+// export const StyledLink = styled.a`
+//   text-decoration: none;
+//   color: blue;
+//   ${
+//     "" /* :hover {
+//   text-decoration: none;
+//   font-size: 120%;
+//   color: yellow; */
+//   }
+// `;
+
+// export const StyledNavTitle = styled.h1`
+//   font-family: "Pokemon Solid";
+//   margin-top: -150px;
+//   font-size: 70px;
+// `;
+
+// export const StyledAbout = styled.h2`
+//   font-family: "Pokemon Solid";
+//   margin-top: -200px;
+// `;

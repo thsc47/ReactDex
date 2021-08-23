@@ -23,6 +23,8 @@ import { Bar } from "react-chartjs-2";
 import Card from "../Card";
 //Importing Support Functions
 import getEvolutionChain from "./evolutionChain";
+import handleLocalStorage from "./handleLocalStorage";
+
 const API = new APIHandler("https://pokeapi.co/api/v2/");
 
 class PokemonDetails extends Component {
@@ -78,7 +80,13 @@ class PokemonDetails extends Component {
     const capitalizePokemonName = name[0].toUpperCase() + name.slice(1);
     return (
       <Container>
-        <StyledTitle>{capitalizePokemonName}</StyledTitle>
+        <StyledTitle>
+          {capitalizePokemonName}{" "}
+          <button onClick={() => handleLocalStorage(name)}>
+            Set Party Member
+          </button>
+        </StyledTitle>
+
         <InfoType>
           {pokemonType &&
             pokemonType.map((pokemon) => (

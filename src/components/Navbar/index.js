@@ -1,13 +1,40 @@
-
 import React from "react";
-//import { Link } from "react-router-dom";
-import Navbackground from "../../assets/images/navbackground.gif";
-import { StyledNav, StyledNavLink, StyledNavBackground, StyledNavTitle, StyledAbout, StyledLink,  } from "../UI";
+import { Link } from "react-router-dom";
+import NavLogo from "../../assets/images/logo.png";
+import { Header, Logo, NavLink, PartyButton } from "../UI";
 
 const Navbar = () => {
   return (
     <>
-      <StyledNav>
+      <Header>
+        <Link to={"/"}>
+          <Logo src={NavLogo} alt="ReactDex logo" />
+        </Link>
+        <nav>
+          <NavLink>
+            <li>
+              <Link to={"/"}>Home</Link>
+            </li>
+            <li>
+              <Link to={"/"}>Advanced Search</Link>
+            </li>
+            <li>
+              <Link to={"/"}>About</Link>
+            </li>
+          </NavLink>
+        </nav>
+        <Link to={"/"}>
+          <PartyButton>My Party</PartyButton>
+        </Link>
+      </Header>
+    </>
+  );
+};
+
+export default Navbar;
+
+{
+  /* <StyledNav>
         <StyledNavBackground src={Navbackground} alt="logo" />
       </StyledNav>
 
@@ -18,9 +45,5 @@ const Navbar = () => {
         <StyledLink to="/about">
           <StyledAbout>About us</StyledAbout>
         </StyledLink>
-      </StyledNavLink>
-    </>
-  );
-};
-
-export default Navbar;
+      </StyledNavLink> */
+}
