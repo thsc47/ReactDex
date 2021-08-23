@@ -25,6 +25,9 @@ export const NavLink = styled.ul`
   li {
     display: inline-block;
     padding: 0px 20px;
+    @media (max-width: 600px) {
+      padding: 5px 20px;
+    }
   }
   li a {
     color: #fff;
@@ -34,11 +37,6 @@ export const NavLink = styled.ul`
   }
   li a:hover {
     color: #000;
-  }
-  @media (max-width: 600px) {
-    li{
-    padding: 5px 10px;
-    }
   }
 `;
 
@@ -65,6 +63,7 @@ export const BtnTheme = styled.button`
   cursor: pointer;
   @media (max-width: 600px) {
     right: 40px;
+    top: 60px;
   }
 `;
 
@@ -89,6 +88,9 @@ export const StyledDiv = styled.div`
   align-content: center;
   border: 1px solid black;
   border-radius: 4px;
+  :hover{
+    border: 1px solid lightgrey;
+  }
 `;
 
 export const StyledImg = styled.img`
@@ -138,6 +140,19 @@ export const StyledTitle = styled.h1`
   text-align: center;
   font-size: 48px;
   color: ${({ theme }) => theme.text};
+`;
+
+export const BtnParty = styled.button`
+  position: absolute;
+  top: 135px;
+  right: 630px;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  @media (max-width: 600px) {
+    right: 80px;
+    top: 173px;
+  }
 `;
 
 export const InfoType = styled.section`
@@ -251,6 +266,9 @@ export const ErrorTitle = styled.h1`
   font-size: 42px;
   line-height: 6;
   font-family: "Flexo-Regular", arial, sans-serif;
+  @media (max-width: 600px) {
+    line-height: 2;
+  }
 `;
 
 export const ErrorP = styled.h4`
@@ -275,8 +293,12 @@ export const Block1 = styled.div`
 `;
 
 export const ErrorImg = styled.img`
-  width: ${Math.floor(1024 / 2)}px;
-  height: ${Math.floor(1603 / 2)}px;
+  width: ${Math.floor(1024 / 3)}px;
+  height: ${Math.floor(1603 / 3)}px;
+  @media (max-width: 600px) {
+    width: ${Math.floor(1024 / 5)}px;
+    height: ${Math.floor(1603 / 5)}px;
+  }
 `;
 
 //backup Navbar
