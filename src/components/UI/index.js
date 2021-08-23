@@ -8,13 +8,16 @@ export const Header = styled.header`
   align-items: center;
   padding: 30px 10%;
   background-color: #d01e36;
-  margin-bottom:5px;
+  margin-bottom: 5px;
+  @media (max-width: 600px) {
+    height: 150px;
+  }
 `;
 
 export const Logo = styled.img`
   cursor: pointer;
-  width:179px;
-  height:48px;
+  width: 179px;
+  height: 48px;
 `;
 
 export const NavLink = styled.ul`
@@ -24,7 +27,7 @@ export const NavLink = styled.ul`
     padding: 0px 20px;
   }
   li a {
-    color:#fff;
+    color: #fff;
   }
   li a {
     transition: all 0.3s ease 0s;
@@ -32,12 +35,17 @@ export const NavLink = styled.ul`
   li a:hover {
     color: #000;
   }
+  @media (max-width: 600px) {
+    li{
+    padding: 5px 10px;
+    }
+  }
 `;
 
 export const PartyButton = styled.button`
   padding: 9px 25px;
   background-color: rgba(0, 136, 169, 1);
-  color:#fff;
+  color: #fff;
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -50,11 +58,14 @@ export const PartyButton = styled.button`
 //Components from App
 export const BtnTheme = styled.button`
   position: absolute;
-  top: 8vh;
+  top: 43px;
   right: 100px;
   background-color: inherit;
   border: none;
   cursor: pointer;
+  @media (max-width: 600px) {
+    right: 40px;
+  }
 `;
 
 //Components from ThemeSwitcher
@@ -109,7 +120,7 @@ export const StyledLabel = styled.span`
 export const StyledTextField = styled.input`
   width: 100%;
   height: 25px;
-  margin-bottom:5px;
+  margin-bottom: 5px;
   background-color: ${({ theme }) => theme.body};
   border: none;
   border-bottom: 2px solid ${({ theme }) => theme.text};
@@ -231,6 +242,41 @@ export const InfoLabelDisplay = styled.span`
   color: ${({ theme }) => theme.text};
   font-size: 24px;
   text-align: center;
+`;
+//Components from 404
+export const ErrorTitle = styled.h1`
+  color: ${({ theme }) => theme.text};
+  cursor: default;
+  text-transform: none;
+  font-size: 42px;
+  line-height: 6;
+  font-family: "Flexo-Regular", arial, sans-serif;
+`;
+
+export const ErrorP = styled.h4`
+  color: ${({ theme }) => theme.text};
+  cursor: default;
+  text-transform: none;
+  font-family: "Flexo-Regular", arial, sans-serif;
+`;
+export const Container404 = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+export const Block1 = styled.div`
+  width: 50%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+`;
+
+export const ErrorImg = styled.img`
+  width: ${Math.floor(1024 / 2)}px;
+  height: ${Math.floor(1603 / 2)}px;
 `;
 
 //backup Navbar

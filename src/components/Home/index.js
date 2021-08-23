@@ -39,7 +39,7 @@ class Home extends Component {
 
     return (
       <>
-        <Container>
+        <Container fixed={false}>
           <StyledLabel>Search Pokemon</StyledLabel>
           <StyledTextField
             onChange={(e) => this.handleChanges(e)}

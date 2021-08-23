@@ -12,6 +12,7 @@ import ThemeSwitcher from "../ThemeSwitcher";
 import Navbar from "../Navbar"
 import Home from "../Home";
 import PokemonDetails from "../PokemonDetails";
+import  Error404  from "../Error404";
 
 function App() {
   const [theme, setTheme] = useState(true);
@@ -23,7 +24,7 @@ function App() {
   return (
       <ThemeProvider theme={theme ? lightTheme : darkTheme}>
         <GlobalStyle />
-        <Navbar />
+        <Navbar  />
         <BtnTheme onClick={toggleTheme}>
           <ThemeSwitcher theme={theme} />
         </BtnTheme>
@@ -31,6 +32,7 @@ function App() {
           <Route path = "/" component = {Home} exact />
           <Route path = "/details" component = {Home} exact />
           <Route path = "/details/:name" component = {PokemonDetails} />
+          <Route  component = {Error404} />
         </Switch>
       </ThemeProvider>
   );

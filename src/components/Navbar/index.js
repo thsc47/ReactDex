@@ -13,7 +13,7 @@ const Navbar = () => {
         <nav>
           <NavLink>
             <li>
-              <Link to={"/"}>Home</Link>
+              <Link to={"/"}> My Party</Link>
             </li>
             <li>
               <Link to={"/"}>Advanced Search</Link>
@@ -23,9 +23,6 @@ const Navbar = () => {
             </li>
           </NavLink>
         </nav>
-        <Link to={"/"}>
-          <PartyButton>My Party</PartyButton>
-        </Link>
       </Header>
     </>
   );
