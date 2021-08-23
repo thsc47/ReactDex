@@ -5,7 +5,7 @@ import Card from "../Card/index.js";
 //importing api
 import APIHandler from "../../APIHandler";
 // importing styled-components / materialUI
-import { StyledLabel, StyledTextField } from "../UI/index.js";
+import { StyledLabel, StyledTextField,InfoLabel } from "../UI/index.js";
 import { Container, Grid } from "@material-ui/core";
 
 class Home extends Component {
@@ -15,7 +15,11 @@ class Home extends Component {
     const filtered = pokemons.filter((pokemon) => {
       return pokemon.name.toLowerCase().includes(value.toLowerCase());
     });
-    this.setState({ filteredPokemons: filtered });
+    this.setState({ 
+      filteredPokemons: filtered,
+      search: value,
+     });
+
   };
 
   async componentDidMount() {
@@ -27,10 +31,11 @@ class Home extends Component {
   state = {
     pokemons: [],
     filteredPokemons: [],
+    search: 0,
   };
 
   render() {
-    const { filteredPokemons } = this.state;
+    const { filteredPokemons, search } = this.state;
 
     return (
       <>
@@ -46,10 +51,15 @@ class Home extends Component {
             alignItems="center"
             fixed
           >
-            {filteredPokemons.map((pokemon) => (
+            {!(filteredPokemons.length === 0 && search !== 0) ? filteredPokemons.map((pokemon) => (
               <Card key={pokemon.name} name={pokemon.name} />
-            ))}
+            )) : <InfoLabel style={{ lineHeight: "350px" }}>
+                  {search} wasn't found.
+                </InfoLabel> }
+            
           </Grid>
+          { console.log(filteredPokemons.length)}
+
         </Container>
       </>
     );

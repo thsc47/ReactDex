@@ -172,6 +172,7 @@ export const InfoContainer = styled.section`
   color: ${({ theme }) => theme.text};
   height: 460px;
   width: 100%;
+  margin-top:10px;
   padding: 15px;
   @media(max-width: 600px){
     height: 100%;
