@@ -13,6 +13,7 @@ import Navbar from "../Navbar"
 import Home from "../Home";
 import PokemonDetails from "../PokemonDetails";
 import MyParty from "../MyParty"
+import Generations from "../Generations";
 import  Error404  from "../Error404";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path = "/details" component = {Home} exact />
           <Route path = "/details/:name" component = {PokemonDetails} />
           <Route path = "/my-party" component = {MyParty} exact/>
+          <Route path = "/generations" component = {Generations} exact/>
           <Route  component = {Error404} />
         </Switch>
       </ThemeProvider>
