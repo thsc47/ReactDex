@@ -33,8 +33,10 @@ class MyPartyCard extends Component {
       <PokemonUIBorder>
         <Sprite src={pokemonImg} />
         <PokemonUICell>
-            <PokemonName>{name}</PokemonName>
-          <PokemonInfo>HP:{hp}/{hp}</PokemonInfo>
+          <PokemonName>{name}</PokemonName>
+          <PokemonInfo>
+            HP:{hp}/{hp}
+          </PokemonInfo>
         </PokemonUICell>
       </PokemonUIBorder>
     );

@@ -295,6 +295,7 @@ export const Sprite = styled.img`
 
 export const PokemonName = styled.span`
   text-align: center;
+  color: ${({ theme }) => theme.text};
   text-height: bold;
   padding-left: 25px;
   text-transform: capitalize;
@@ -304,6 +305,23 @@ export const PokemonName = styled.span`
 export const PokemonInfo = styled.span`
   text-transform: capitalize;
   font-size: 14px;
+  color:${({ theme }) => theme.text};
+`;
+
+export const DeleteAll = styled.button`
+  text-transform: capitalize;
+  font-size: 16px;
+  margin: 25px;
+  padding: 9px 25px;
+  background-color: rgba(0, 136, 169, 1);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  :hover {
+    background-color: rgba(0, 136, 169, 0.8);
+  }
 `;
 
 //Components from 404
