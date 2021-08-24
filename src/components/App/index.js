@@ -33,7 +33,7 @@ function App() {
           <Route path = "/" component = {Home} exact />
           <Route path = "/details" component = {Home} exact />
           <Route path = "/details/:name" component = {PokemonDetails} />
-          <Route path = "/my-party" component = {MyParty} />
+          <Route path = "/my-party" component = {MyParty} exact/>
           <Route  component = {Error404} />
         </Switch>
       </ThemeProvider>
