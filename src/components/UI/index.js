@@ -88,7 +88,7 @@ export const StyledDiv = styled.div`
   align-content: center;
   border: 1px solid black;
   border-radius: 4px;
-  :hover{
+  :hover {
     border: 1px solid lightgrey;
   }
 `;
@@ -258,6 +258,54 @@ export const InfoLabelDisplay = styled.span`
   font-size: 24px;
   text-align: center;
 `;
+
+//Components from PokemonPartyCard
+export const PokemonUIBorder = styled.section`
+  display: flex;
+  align-items: flex-start;
+  align-items: center;
+  border: 1px solid ${({ theme }) => theme.text};
+  border-radius: 90px 0 0 90px;
+  margin: 10px;
+  padding-left: 20px;
+  height: 95px;
+  width: 250px;
+`;
+
+export const PokemonUICell = styled.div`
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: stretch;
+`;
+
+export const Sprite = styled.img`
+  height: 96px;
+  width: 96px;
+  animation: bouncing 0.3s ease infinite;
+  @keyframes bouncing {
+    to {
+      transform: translateX(4px);
+      transform: translateY(-9px);
+    }
+  }
+`;
+
+export const PokemonName = styled.span`
+  text-align: center;
+  text-height: bold;
+  padding-left: 25px;
+  text-transform: capitalize;
+  font-size: 20px;
+`;
+
+export const PokemonInfo = styled.span`
+  text-transform: capitalize;
+  font-size: 14px;
+`;
+
 //Components from 404
 export const ErrorTitle = styled.h1`
   color: ${({ theme }) => theme.text};
@@ -300,46 +348,3 @@ export const ErrorImg = styled.img`
     height: ${Math.floor(1603 / 5)}px;
   }
 `;
-
-//backup Navbar
-// export const StyledNav = styled.nav`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   font-family: "Pokemon Solid";
-// `;
-
-// export const StyledNavBackground = styled.img`
-//   height: 180px;
-//   width: 92%;
-// `;
-
-// export const StyledNavLink = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-around;
-//   margin-left: 300px;
-//   margin-bottom: 5px;
-// `;
-
-// export const StyledLink = styled.a`
-//   text-decoration: none;
-//   color: blue;
-//   ${
-//     "" /* :hover {
-//   text-decoration: none;
-//   font-size: 120%;
-//   color: yellow; */
-//   }
-// `;
-
-// export const StyledNavTitle = styled.h1`
-//   font-family: "Pokemon Solid";
-//   margin-top: -150px;
-//   font-size: 70px;
-// `;
-
-// export const StyledAbout = styled.h2`
-//   font-family: "Pokemon Solid";
-//   margin-top: -200px;
-// `;

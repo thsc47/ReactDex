@@ -81,10 +81,15 @@ class PokemonDetails extends Component {
     }
   }
 
-  handleClick = (name) =>{
-    const {isAMember} = this.state;
-    this.setState({isAMember: !isAMember});
-    handleLocalStorage(name);
+ 
+
+
+  handleClick = (name, handleState) =>{
+    handleState = () =>{
+      const {isAMember} = this.state;
+      this.setState({isAMember: !isAMember});
+    }
+    handleLocalStorage(name, handleState);
   }
 
   render() {
