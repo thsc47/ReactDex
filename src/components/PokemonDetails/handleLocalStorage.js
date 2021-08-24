@@ -9,7 +9,7 @@ const handleLocalStorage = (name, handleState) => {
     party.push(name);
     handleState();
   } else{
-    return console.log("Your party can only contain six members.");
+    return alert("Your party can only contain six members.");
   }
   localStorage.setItem("party-member", JSON.stringify(party));
 };

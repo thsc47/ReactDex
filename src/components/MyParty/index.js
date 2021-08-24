@@ -9,7 +9,7 @@ class MyParty extends Component {
   };
 
   componentDidMount() {
-    const local = JSON.parse(localStorage.getItem("party-member"));
+    const local = JSON.parse(localStorage.getItem("party-member")) || [];
     this.setState({ party: local });
   }
 

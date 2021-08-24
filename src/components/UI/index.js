@@ -136,6 +136,15 @@ export const StyledTextField = styled.input`
 
 //Components from PokemonDetains
 //Header
+export const MainTitleContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+	align-items: center;
+	align-content: center;
+  paddind-right:15px;
+`;
+
 export const StyledTitle = styled.h1`
   text-align: center;
   font-size: 48px;
@@ -143,9 +152,6 @@ export const StyledTitle = styled.h1`
 `;
 
 export const BtnParty = styled.button`
-  position: absolute;
-  top: 135px;
-  right: 630px;
   background-color: inherit;
   border: none;
   cursor: pointer;
@@ -259,15 +265,15 @@ export const InfoLabelDisplay = styled.span`
   text-align: center;
 `;
 
-//Components from PokemonPartyCard
+//Components from PokemonPartyCard // 0 0 90px
 export const PokemonUIBorder = styled.section`
   display: flex;
   align-items: flex-start;
   align-items: center;
   border: 1px solid ${({ theme }) => theme.text};
-  border-radius: 90px 0 0 90px;
+  border-radius: 90px; 
   margin: 10px;
-  padding-left: 20px;
+  padding-left: 15px;
   height: 95px;
   width: 250px;
 `;
@@ -297,7 +303,7 @@ export const PokemonName = styled.span`
   text-align: center;
   color: ${({ theme }) => theme.text};
   text-height: bold;
-  padding-left: 25px;
+  padding-left: 5px;
   text-transform: capitalize;
   font-size: 20px;
 `;
