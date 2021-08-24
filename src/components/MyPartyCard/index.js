@@ -19,7 +19,6 @@ class MyPartyCard extends Component {
     const { name } = this.props;
     const API = new APIHandler("https://pokeapi.co/api/v2/");
     const { data } = await API.getOnePokemons(name);
-    console.log(data);
     this.setState({
       pokemon: data,
       pokemonImg: data.sprites.front_default,
@@ -32,7 +31,6 @@ class MyPartyCard extends Component {
     const { pokemon, pokemonImg, hp } = this.state;
     return (
       <PokemonUIBorder>
-        {console.log(hp)}
         <Sprite src={pokemonImg} />
         <PokemonUICell>
             <PokemonName>{name}</PokemonName>
