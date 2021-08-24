@@ -34,6 +34,7 @@ class Card extends Component {
     const PokemonName = pokemon.name
     //const capitalizePokemonName = PokemonName[0].toUpperCase() + pokemon.name.slice(1) 
     return (
+      <>
       <Link to = {`/details/${pokemon.name}`}>
       <StyledDiv className={pokemon.name} >
         {pokemonImg !== "" ? (
@@ -50,10 +51,11 @@ class Card extends Component {
           className={pokemon.name}
           style={{ backgroundColor: `${typeBackground[pokemonType]}` }}
         >
-          {pokemonType}
+          {pokemonType} 
         </StyledType>
       </StyledDiv>
       </Link>
+      </>
     );
   }
 }

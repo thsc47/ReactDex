@@ -1,4 +1,4 @@
-import APIHandler from "../APIHandler";
+import APIHandler from "../../APIHandler";
 
 const getEvolutionChain = async (name) => {
   const API = new APIHandler("https://pokeapi.co/api/v2/");

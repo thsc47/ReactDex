@@ -6,11 +6,18 @@ body{
         background-color: ${({ theme }) => theme.body};
         
 }
+@font-face{
+        font-family: "ingame";
+        src: local('ingame'),
+        url("./fonts/ingame.ttf"), 
+        format('ttf');
+        font-weight: normal;
+        font-style: normal;
+}
     
 *{
-
        box-sizing: border-box;
-       font-family: "Montserrat", sans-serif;
+       font-family: "ingame","Arial","Montserrat", sans-serif;
        margin: 0;
        padding: 0;
        text-decoration: none; 

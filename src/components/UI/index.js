@@ -2,56 +2,69 @@
 import styled from "styled-components";
 
 //Components from Navbar
-export const StyledNav = styled.nav`
+export const Header = styled.header`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-family: "Pokemon Solid";
-`;
-
-export const StyledNavBackground = styled.img`
-  height: 180px;
-  width: 92%;
-`;
-
-export const StyledNavLink = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-left: 300px;
+  padding: 30px 10%;
+  background-color: #d01e36;
   margin-bottom: 5px;
-`;
-
-export const StyledLink = styled.a`
-  text-decoration: none;
-  color: blue;
-  ${
-    "" /* :hover {
-  text-decoration: none;
-  font-size: 120%;
-  color: yellow; */
+  @media (max-width: 600px) {
+    height: 150px;
   }
 `;
 
-export const StyledNavTitle = styled.h1`
-  font-family: "Pokemon Solid";
-  margin-top: -150px;
-  font-size: 70px;
+export const Logo = styled.img`
+  cursor: pointer;
+  width: 179px;
+  height: 48px;
 `;
 
-export const StyledAbout = styled.h2`
-  font-family: "Pokemon Solid";
-  margin-top: -200px;
+export const NavLink = styled.ul`
+  list-style: none;
+  li {
+    display: inline-block;
+    padding: 0px 20px;
+    @media (max-width: 600px) {
+      padding: 5px 20px;
+    }
+  }
+  li a {
+    color: #fff;
+  }
+  li a {
+    transition: all 0.3s ease 0s;
+  }
+  li a:hover {
+    color: #000;
+  }
+`;
+
+export const PartyButton = styled.button`
+  padding: 9px 25px;
+  background-color: rgba(0, 136, 169, 1);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  :hover {
+    background-color: rgba(0, 136, 169, 0.8);
+  }
 `;
 
 //Components from App
 export const BtnTheme = styled.button`
   position: absolute;
-  top: 2vh;
-  right: 120px;
+  top: 43px;
+  right: 100px;
   background-color: inherit;
   border: none;
   cursor: pointer;
+  @media (max-width: 600px) {
+    right: 40px;
+    top: 60px;
+  }
 `;
 
 //Components from ThemeSwitcher
@@ -75,6 +88,9 @@ export const StyledDiv = styled.div`
   align-content: center;
   border: 1px solid black;
   border-radius: 4px;
+  :hover {
+    border: 1px solid lightgrey;
+  }
 `;
 
 export const StyledImg = styled.img`
@@ -106,6 +122,7 @@ export const StyledLabel = styled.span`
 export const StyledTextField = styled.input`
   width: 100%;
   height: 25px;
+  margin-bottom: 5px;
   background-color: ${({ theme }) => theme.body};
   border: none;
   border-bottom: 2px solid ${({ theme }) => theme.text};
@@ -119,10 +136,29 @@ export const StyledTextField = styled.input`
 
 //Components from PokemonDetains
 //Header
+export const MainTitleContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+	align-items: center;
+	align-content: center;
+  paddind-right:15px;
+`;
+
 export const StyledTitle = styled.h1`
   text-align: center;
   font-size: 48px;
   color: ${({ theme }) => theme.text};
+`;
+
+export const BtnParty = styled.button`
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  @media (max-width: 600px) {
+    right: 80px;
+    top: 173px;
+  }
 `;
 
 export const InfoType = styled.section`
@@ -172,8 +208,9 @@ export const InfoContainer = styled.section`
   color: ${({ theme }) => theme.text};
   height: 460px;
   width: 100%;
+  margin-top: 10px;
   padding: 15px;
-  @media(max-width: 600px){
+  @media (max-width: 600px) {
     height: 100%;
   }
 `;
@@ -226,4 +263,112 @@ export const InfoLabelDisplay = styled.span`
   color: ${({ theme }) => theme.text};
   font-size: 24px;
   text-align: center;
+`;
+
+//Components from PokemonPartyCard // 0 0 90px
+export const PokemonUIBorder = styled.section`
+  display: flex;
+  align-items: flex-start;
+  align-items: center;
+  border: 1px solid ${({ theme }) => theme.text};
+  border-radius: 90px; 
+  margin: 10px;
+  padding-left: 15px;
+  height: 95px;
+  width: 250px;
+`;
+
+export const PokemonUICell = styled.div`
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: stretch;
+`;
+
+export const Sprite = styled.img`
+  height: 96px;
+  width: 96px;
+  animation: bouncing 0.3s ease infinite;
+  @keyframes bouncing {
+    to {
+      transform: translateX(4px);
+      transform: translateY(-9px);
+    }
+  }
+`;
+
+export const PokemonName = styled.span`
+  text-align: center;
+  color: ${({ theme }) => theme.text};
+  text-height: bold;
+  padding-left: 5px;
+  text-transform: capitalize;
+  font-size: 20px;
+`;
+
+export const PokemonInfo = styled.span`
+  text-transform: capitalize;
+  font-size: 14px;
+  color:${({ theme }) => theme.text};
+`;
+
+export const DeleteAll = styled.button`
+  text-transform: capitalize;
+  font-size: 16px;
+  margin: 25px;
+  padding: 9px 25px;
+  background-color: rgba(0, 136, 169, 1);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  :hover {
+    background-color: rgba(0, 136, 169, 0.8);
+  }
+`;
+
+//Components from 404
+export const ErrorTitle = styled.h1`
+  color: ${({ theme }) => theme.text};
+  cursor: default;
+  text-transform: none;
+  font-size: 42px;
+  line-height: 6;
+  font-family: "Flexo-Regular", arial, sans-serif;
+  @media (max-width: 600px) {
+    line-height: 2;
+  }
+`;
+
+export const ErrorP = styled.h4`
+  color: ${({ theme }) => theme.text};
+  cursor: default;
+  text-transform: none;
+  font-family: "Flexo-Regular", arial, sans-serif;
+`;
+export const Container404 = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+export const Block1 = styled.div`
+  width: 50%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+`;
+
+export const ErrorImg = styled.img`
+  width: ${Math.floor(1024 / 3)}px;
+  height: ${Math.floor(1603 / 3)}px;
+  @media (max-width: 600px) {
+    width: ${Math.floor(1024 / 5)}px;
+    height: ${Math.floor(1603 / 5)}px;
+  }
 `;
