@@ -4,7 +4,7 @@ const typeBackground = {
     dragon: '#755EDF',
     electric: '#FCBC17',
     fairy: '#F4B1F4',
-    fighting: '#823551D',
+    fighting: '#823551',
     fire: '#E73B0C',
     flying: '#A3B3F7',
     ghost: '#6060B2',
