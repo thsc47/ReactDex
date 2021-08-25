@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import APIHandler from "../../APIHandler"
 // importing StyledComponents and IMG
 import { StyledLoading, StyledImg, StyledDiv, StyledType } from "../UI";
+import { Box } from "@material-ui/core";
+import { shadows } from '@material-ui/system';
 import LoadingImg from "../../assets/images/loading.gif";
 import typeBackground from "../UI/typeBackground";
 
@@ -28,7 +30,7 @@ class Card extends Component {
       pokemonName: data.name,
     });
   }
-
+ 
   render() {
     const { pokemon, pokemonImg, pokemonType } = this.state;
     const PokemonName = pokemon.name
@@ -36,6 +38,7 @@ class Card extends Component {
     return (
       <>
       <Link to = {`/details/${pokemon.name}`}>
+      <Box boxShadow={1}>
       <StyledDiv className={pokemon.name} >
         {pokemonImg !== "" ? (
           <StyledImg
@@ -51,9 +54,12 @@ class Card extends Component {
           className={pokemon.name}
           style={{ backgroundColor: `${typeBackground[pokemonType]}` }}
         >
+
           {pokemonType} 
+            
         </StyledType>
       </StyledDiv>
+      </Box>
       </Link>
       </>
     );

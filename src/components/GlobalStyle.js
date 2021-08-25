@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import PokomonTipo from "../assets/fonts/ingame.ttf"
 
 const GlobalStyle = createGlobalStyle`
 
@@ -8,16 +9,14 @@ body{
 }
 @font-face{
         font-family: "ingame";
-        src: local('ingame'),
-        url("./fonts/ingame.ttf"), 
-        format('ttf');
-        font-weight: normal;
-        font-style: normal;
+        src: local("ingame"),
+        url(${PokomonTipo}), 
+        format('truetype');
 }
     
 *{
        box-sizing: border-box;
-       font-family: "ingame","Arial","Montserrat", sans-serif;
+       font-family: "Pokemon Solid","Arial","Montserrat", sans-serif;
        margin: 0;
        padding: 0;
        text-decoration: none; 
