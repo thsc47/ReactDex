@@ -372,3 +372,48 @@ export const ErrorImg = styled.img`
     height: ${Math.floor(1603 / 5)}px;
   }
 `;
+
+//Components from Generation
+export const TypeDiv = styled.div`
+  background: ${({ theme }) => theme.body};
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+`;
+
+//Components from GenerationhForm
+
+export const StyledSelect = styled.select`
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  font-size: 1.1rem;
+  margin: 1em;
+  padding: 1em 1.1em;
+  background: ${({ theme }) => theme.body};
+  color: ${({ theme }) => theme.text};
+  @media (max-width:600px) {
+    padding: 1em;
+    margin: 0.5em;
+  }
+`;
+
+export const AdvancedSubtitle = styled.h2`
+  color: ${({ theme }) => theme.text};
+  cursor: default;
+  text-transform: capitalize;
+  font-size: 36px;
+`;
+
+export const StyledMoves = styled.div`
+  margin: 5px;
+  padding: 3px;
+  font-weight: bold;
+  color: ${({ theme }) => theme.text};
+  border: 1px solid #f1f1f1;
+  border-radius: 15px;
+`;

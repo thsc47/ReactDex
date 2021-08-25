@@ -16,7 +16,7 @@ const Navbar = () => {
               <Link to={"/my-party"}> My Party</Link>
             </li>
             <li>
-              <Link to={"/"}>Advanced Search</Link>
+              <Link to={"/generations"}>Generations Details</Link>
             </li>
             <li>
               <Link to={"/"}>About</Link>

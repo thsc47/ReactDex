@@ -18,6 +18,9 @@ class APIHandler {
   async getEvolutionChain(inicialPokemonId) {
     return this.api.get(`evolution-chain/${inicialPokemonId}`);
   }
+  async getRegion(regionID) {
+    return this.api.get(`generation/${regionID}`);
+  }
 }
 
 export default APIHandler 
