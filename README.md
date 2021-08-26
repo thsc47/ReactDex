@@ -37,3 +37,5 @@ Under **LGPL License**
 
 Two students very excited about studying web development!  find us at:
 [Linkedin (Thiago)](https://www.linkedin.com/in/thsc47)
+[Linkedin (Thiago)](https://www.linkedin.com/in/flaviopestana/)
+)

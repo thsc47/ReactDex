@@ -1,24 +1,20 @@
 import { createGlobalStyle } from "styled-components";
-import PokomonTipo from "../assets/fonts/ingame.ttf"
 
 const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 body{
         background-color: ${({ theme }) => theme.body};
         
 }
-@font-face{
-        font-family: "ingame";
-        src: local("ingame"),
-        url(${PokomonTipo}), 
-        format('truetype');
-}
+
     
 *{
        box-sizing: border-box;
-       font-family: "Pokemon Solid","Arial","Montserrat", sans-serif;
+       font-family:'VT323', monospace;"Montserrat", sans-serif;
        margin: 0;
        padding: 0;
+       font-size: 16px;
        text-decoration: none; 
        
     }
