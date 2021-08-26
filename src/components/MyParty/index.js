@@ -23,6 +23,7 @@ class MyParty extends Component {
   render() {
     const { party } = this.state;
     return (
+      <Box minHeight="100vh">
       <Container>
         <StyledTitle>My Party</StyledTitle>
         <Grid
@@ -54,6 +55,7 @@ class MyParty extends Component {
           )}
         </PokemonUICell>
       </Container>
+      </Box>
     );
   }
 }

@@ -8,7 +8,7 @@ export const Header = styled.header`
   align-items: center;
   padding: 30px 10%;
   background-color: #d01e36;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   @media (max-width: 600px) {
     height: 150px;
   }
@@ -122,11 +122,11 @@ export const StyledLabel = styled.span`
 export const StyledTextField = styled.input`
   width: 100%;
   height: 25px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   background-color: ${({ theme }) => theme.body};
   border: none;
   border-bottom: 2px solid ${({ theme }) => theme.text};
-  border-radius: 4px;
+  border-radius: 5px;
   placeholder: "Search Pokemon";
   color: ${({ theme }) => theme.text};
   :focus {
@@ -140,13 +140,14 @@ export const MainTitleContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-	align-items: center;
-	align-content: center;
-  paddind-right:15px;
+  align-items: center;
+  align-content: center;
+  paddind-right: 15px;
 `;
 
 export const StyledTitle = styled.h1`
   text-align: center;
+  margin-bottom: 15px;
   font-size: 48px;
   color: ${({ theme }) => theme.text};
 `;
@@ -271,7 +272,7 @@ export const PokemonUIBorder = styled.section`
   align-items: flex-start;
   align-items: center;
   border: 1px solid ${({ theme }) => theme.text};
-  border-radius: 90px; 
+  border-radius: 90px;
   margin: 10px;
   padding-left: 15px;
   height: 95px;
@@ -280,11 +281,11 @@ export const PokemonUIBorder = styled.section`
 
 export const PokemonUICell = styled.div`
   display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	align-items: center;
-	align-content: stretch;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: stretch;
 `;
 
 export const Sprite = styled.img`
@@ -311,7 +312,7 @@ export const PokemonName = styled.span`
 export const PokemonInfo = styled.span`
   text-transform: capitalize;
   font-size: 14px;
-  color:${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.text};
 `;
 
 export const DeleteAll = styled.button`
@@ -392,11 +393,12 @@ export const StyledSelect = styled.select`
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   width: 100%;
   font-size: 1.1rem;
-  margin: 1em;
+  margin: 15px;
   padding: 1em 1.1em;
+  border-radius: 15px;
   background: ${({ theme }) => theme.body};
   color: ${({ theme }) => theme.text};
-  @media (max-width:600px) {
+  @media (max-width: 600px) {
     padding: 1em;
     margin: 0.5em;
   }
@@ -405,6 +407,7 @@ export const StyledSelect = styled.select`
 export const AdvancedSubtitle = styled.h2`
   color: ${({ theme }) => theme.text};
   cursor: default;
+  margin-bottom: 15px;
   text-transform: capitalize;
   font-size: 36px;
 `;
@@ -416,4 +419,43 @@ export const StyledMoves = styled.div`
   color: ${({ theme }) => theme.text};
   border: 1px solid #f1f1f1;
   border-radius: 15px;
+`;
+
+//Components from footer
+export const StyledFooter = styled.footer`
+  padding: 20px;
+  background: lightgray;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-between;
+`;
+
+export const StyledFooterLogo = styled.img`
+  width: 75px;
+  height: 24px;
+`;
+
+export const StyledFooterTitle = styled.h4`
+  color: #396bba;
+  text-align: center;
+  margin-left:25px;
+`;
+
+export const StyledFooterIcons = styled.img`
+  width: 36px;
+  height: 36px;
+  margin-right:50px;
+  margin-top:10px;
+`;
+
+export const StyledFooterDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-between;
 `;

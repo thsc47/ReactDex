@@ -19,7 +19,7 @@ import {
   CardContainer,
   InfoLabelDisplay,
 } from "../UI";
-import { Container, Grid } from "@material-ui/core";
+import { Box, Container, Grid } from "@material-ui/core";
 import typeBackground from "../UI/typeBackground.js";
 import { Bar } from "react-chartjs-2";
 import StarHollow from "../../assets/images/starHollow.svg";
@@ -107,128 +107,139 @@ class PokemonDetails extends Component {
     const { name } = this.props.match.params;
     const capitalizePokemonName = name[0].toUpperCase() + name.slice(1);
     return (
-      <Container>
-        <MainTitleContainer>
-          <StyledTitle>
-            {capitalizePokemonName}{" "}
-            <BtnParty onClick={() => this.handleClick(name)}>
-              {isAMember ? (
-                <StyledIcon src={StarFull} alt="Remove Party Membr" />
-              ) : (
-                <StyledIcon src={StarHollow} alt="Remove Party Member" />
-              )}
-            </BtnParty>
-          </StyledTitle>
-        </MainTitleContainer>
+      <Box minHeight="100vh">
+        <Container>
+          <MainTitleContainer>
+            <StyledTitle>
+              {capitalizePokemonName}{" "}
+              <BtnParty onClick={() => this.handleClick(name)}>
+                {isAMember ? (
+                  <StyledIcon src={StarFull} alt="Remove Party Membr" />
+                ) : (
+                  <StyledIcon src={StarHollow} alt="Remove Party Member" />
+                )}
+              </BtnParty>
+            </StyledTitle>
+          </MainTitleContainer>
 
-        <InfoType>
-          {pokemonType &&
-            pokemonType.map((pokemon) => (
-              <StyledType
-                key={pokemon.type.name}
-                style={{
-                  backgroundColor: `${typeBackground[pokemon.type.name]}`,
-                }}
-              >
-                {pokemon.type.name}
-              </StyledType>
-            ))}
-        </InfoType>
-        <Grid container justifyContent="flex-start" direction="row" spacing={0}>
-          <Grid item md={5} xs={12}>
-            <ImgContainer>
-              <StyledImd420 src={pokemonImg} />
-            </ImgContainer>
-          </Grid>
-          <Grid item md={7} xs={12}>
-            <InfoContainer>
-              <StyledContainerTitle>Basic Information:</StyledContainerTitle>
-              <CardContainer>
-                <InfoCard>
-                  <InfoLabel>Heigh:</InfoLabel>
-                  {pokemon.height > 0 ? (
-                    <InfoLabelDisplay>
-                      {pokemon.height / 10} m{" "}
-                    </InfoLabelDisplay>
-                  ) : (
-                    <InfoLabelDisplay> - </InfoLabelDisplay>
-                  )}
-                </InfoCard>
-                <InfoCard>
-                  <InfoLabel>Weight:</InfoLabel>
-                  {pokemon.weight > 0 ? (
-                    <InfoLabelDisplay>
-                      {pokemon.weight / 10} kg{" "}
-                    </InfoLabelDisplay>
-                  ) : (
-                    <InfoLabelDisplay> - </InfoLabelDisplay>
-                  )}
-                </InfoCard>
-                <InfoCard>
-                  <InfoLabel>ID:</InfoLabel>
-                  {pokemon.id > 0 ? (
-                    <InfoLabelDisplay>{pokemon.id} </InfoLabelDisplay>
-                  ) : (
-                    <InfoLabelDisplay> - </InfoLabelDisplay>
-                  )}
-                </InfoCard>
-              </CardContainer>
-              <StyledContainerTitle>Abilities:</StyledContainerTitle>
-              <CardContainer>
-                {abilities.map((pokemon) => (
-                  <InfoCard key={pokemon.ability.name}>
-                    <InfoLabelDisplay>{pokemon.ability.name}</InfoLabelDisplay>
+          <InfoType>
+            {pokemonType &&
+              pokemonType.map((pokemon) => (
+                <StyledType
+                  key={pokemon.type.name}
+                  style={{
+                    backgroundColor: `${typeBackground[pokemon.type.name]}`,
+                  }}
+                >
+                  {pokemon.type.name}
+                </StyledType>
+              ))}
+          </InfoType>
+          <Grid
+            container
+            justifyContent="flex-start"
+            direction="row"
+            spacing={0}
+          >
+            <Grid item md={5} xs={12}>
+              <ImgContainer>
+                <StyledImd420 src={pokemonImg} />
+              </ImgContainer>
+            </Grid>
+            <Grid item md={7} xs={12}>
+              <InfoContainer>
+                <StyledContainerTitle>Basic Information:</StyledContainerTitle>
+                <CardContainer>
+                  <InfoCard>
+                    <InfoLabel>Heigh:</InfoLabel>
+                    {pokemon.height > 0 ? (
+                      <InfoLabelDisplay>
+                        {pokemon.height / 10} m{" "}
+                      </InfoLabelDisplay>
+                    ) : (
+                      <InfoLabelDisplay> - </InfoLabelDisplay>
+                    )}
                   </InfoCard>
-                ))}
+                  <InfoCard>
+                    <InfoLabel>Weight:</InfoLabel>
+                    {pokemon.weight > 0 ? (
+                      <InfoLabelDisplay>
+                        {pokemon.weight / 10} kg{" "}
+                      </InfoLabelDisplay>
+                    ) : (
+                      <InfoLabelDisplay> - </InfoLabelDisplay>
+                    )}
+                  </InfoCard>
+                  <InfoCard>
+                    <InfoLabel>ID:</InfoLabel>
+                    {pokemon.id > 0 ? (
+                      <InfoLabelDisplay>{pokemon.id} </InfoLabelDisplay>
+                    ) : (
+                      <InfoLabelDisplay> - </InfoLabelDisplay>
+                    )}
+                  </InfoCard>
+                </CardContainer>
+                <StyledContainerTitle>Abilities:</StyledContainerTitle>
+                <CardContainer>
+                  {abilities.map((pokemon) => (
+                    <InfoCard key={pokemon.ability.name}>
+                      <InfoLabelDisplay>
+                        {pokemon.ability.name}
+                      </InfoLabelDisplay>
+                    </InfoCard>
+                  ))}
+                </CardContainer>
+              </InfoContainer>
+            </Grid>
+
+            <Bar
+              data={{
+                labels: [
+                  "Hp",
+                  "Attack",
+                  "Defense",
+                  "Special-attack",
+                  "Special-defense",
+                  "Speed",
+                ],
+                datasets: [
+                  {
+                    label: `Stats`,
+                    data: attribute,
+                    backgroundColor: ["rgba(255, 99, 132)"],
+                    borderWidth: 1,
+                  },
+                ],
+              }}
+              height={25}
+              width={50}
+              options={{
+                scales: {
+                  y: {
+                    suggestedMax: 140,
+                  },
+                },
+                maintainaspectratio: false,
+                beginAtZero: true,
+              }}
+            />
+            <InfoContainer>
+              <StyledContainerTitle>Evolution Chain</StyledContainerTitle>
+              <CardContainer>
+                {evoChain.length > 1 ? (
+                  evoChain.map((pokemon) => (
+                    <Card key={pokemon} name={pokemon} />
+                  ))
+                ) : (
+                  <InfoLabel style={{ lineHeight: "350px" }}>
+                    {capitalizePokemonName} doesn't evolve.
+                  </InfoLabel>
+                )}
               </CardContainer>
             </InfoContainer>
           </Grid>
-
-          <Bar
-            data={{
-              labels: [
-                "Hp",
-                "Attack",
-                "Defense",
-                "Special-attack",
-                "Special-defense",
-                "Speed",
-              ],
-              datasets: [
-                {
-                  label: `Stats`,
-                  data: attribute,
-                  backgroundColor: ["rgba(255, 99, 132)"],
-                  borderWidth: 1,
-                },
-              ],
-            }}
-            height={25}
-            width={50}
-            options={{
-              scales: {
-                y: {
-                  suggestedMax: 140,
-                },
-              },
-              maintainaspectratio: false,
-              beginAtZero: true,
-            }}
-          />
-          <InfoContainer>
-            <StyledContainerTitle>Evolution Chain</StyledContainerTitle>
-            <CardContainer>
-              {evoChain.length > 1 ? (
-                evoChain.map((pokemon) => <Card key={pokemon} name={pokemon} />)
-              ) : (
-                <InfoLabel style={{ lineHeight: "350px" }}>
-                  {capitalizePokemonName} doesn't evolve.
-                </InfoLabel>
-              )}
-            </CardContainer>
-          </InfoContainer>
-        </Grid>
-      </Container>
+        </Container>
+      </Box>
     );
   }
 }

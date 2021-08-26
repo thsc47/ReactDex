@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import APIHandler from "../../APIHandler";
 
-import { Container, Grid } from "@material-ui/core";
-import { StyledTitle, AdvancedSubtitle, StyledType, TypeDiv,StyledMoves } from "../UI";
+import { Box, Container, Grid } from "@material-ui/core";
+import {
+  StyledTitle,
+  AdvancedSubtitle,
+  StyledType,
+  TypeDiv,
+  StyledMoves,
+} from "../UI";
 import AdvancedSearchForm from "./GenerationsForm";
 import Card from "../Card";
 import typeBackground from "../UI/typeBackground";
@@ -37,44 +43,44 @@ class AdvancedSearch extends Component {
   render() {
     const { generation, data, name, species, types } = this.state;
     return (
-      <Container>
-        {console.log(data)}
-        <StyledTitle>Advanced Search</StyledTitle>
-        <AdvancedSearchForm handleCheck={this.handleCheck} />
-        <AdvancedSubtitle>Pokemons from {name}</AdvancedSubtitle>
-        <Grid
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-        >
-          {species.map((pokemon) => (
-            <Card key={pokemon} name={pokemon} />
-          ))}
-        </Grid>
-        <AdvancedSubtitle>
-          All types from generation {generation}
-        </AdvancedSubtitle>
-        <TypeDiv>
+      <Box minHeight="100vh">
+        <Container>
+          {console.log(data)}
+          <StyledTitle>Advanced Search</StyledTitle>
+          <AdvancedSearchForm handleCheck={this.handleCheck} />
+          <AdvancedSubtitle>Pokemons from {name}</AdvancedSubtitle>
           <Grid
             container
             direction="row"
             justifyContent="center"
             alignItems="center"
           >
-            {types.map((type) => (
-              <StyledType
-                style={{ backgroundColor: `${typeBackground[type]}` }}
-              >
-                {type}
-              </StyledType>
+            {species.map((pokemon) => (
+              <Card key={pokemon} name={pokemon} />
             ))}
           </Grid>
-        </TypeDiv>
-        <TypeDiv>
-          
-        </TypeDiv>
-      </Container>
+          <AdvancedSubtitle>
+            All types from generation {generation}
+          </AdvancedSubtitle>
+          <TypeDiv>
+            <Grid
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+            >
+              {types.map((type) => (
+                <StyledType
+                  style={{ backgroundColor: `${typeBackground[type]}` }}
+                >
+                  {type}
+                </StyledType>
+              ))}
+            </Grid>
+          </TypeDiv>
+          <TypeDiv></TypeDiv>
+        </Container>
+      </Box>
     );
   }
 }

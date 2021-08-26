@@ -6,7 +6,7 @@ import Card from "../Card/index.js";
 import APIHandler from "../../APIHandler";
 // importing styled-components / materialUI
 import { StyledLabel, StyledTextField,InfoLabel } from "../UI/index.js";
-import { Container, Grid } from "@material-ui/core";
+import { Box, Container, Grid } from "@material-ui/core";
 
 class Home extends Component {
   handleChanges = (input) => {
@@ -38,7 +38,7 @@ class Home extends Component {
     const { filteredPokemons, search } = this.state;
 
     return (
-      <>
+      <Box minHeight="100vh">
         <Container fixed={false}>
           <StyledLabel>Search Pokemon</StyledLabel>
           <StyledTextField
@@ -61,7 +61,7 @@ class Home extends Component {
           { console.log(filteredPokemons.length)}
 
         </Container>
-      </>
+      </Box>
     );
   }
 }

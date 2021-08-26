@@ -7,6 +7,7 @@ import APIHandler from "../../APIHandler"
 import { StyledLoading, StyledImg, StyledDiv, StyledType } from "../UI";
 import LoadingImg from "../../assets/images/loading.gif";
 import typeBackground from "../UI/typeBackground";
+import { Box } from "@material-ui/core";
 
 class Card extends Component {
   //Creating the necessaring states
@@ -34,7 +35,7 @@ class Card extends Component {
     const PokemonName = pokemon.name
     //const capitalizePokemonName = PokemonName[0].toUpperCase() + pokemon.name.slice(1) 
     return (
-      <>
+      <Box padding={1}>
       <Link to = {`/details/${pokemon.name}`}>
       <StyledDiv className={pokemon.name} >
         {pokemonImg !== "" ? (
@@ -55,7 +56,7 @@ class Card extends Component {
         </StyledType>
       </StyledDiv>
       </Link>
-      </>
+      </Box>
     );
   }
 }
