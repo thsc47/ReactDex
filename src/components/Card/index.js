@@ -29,7 +29,7 @@ class Card extends Component {
       pokemonName: data.name,
     });
   }
-
+ 
   render() {
     const { pokemon, pokemonImg, pokemonType } = this.state;
     const PokemonName = pokemon.name
@@ -52,7 +52,9 @@ class Card extends Component {
           className={pokemon.name}
           style={{ backgroundColor: `${typeBackground[pokemonType]}` }}
         >
+
           {pokemonType} 
+            
         </StyledType>
       </StyledDiv>
       </Link>

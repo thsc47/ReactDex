@@ -15,11 +15,12 @@ import typeBackground from "../UI/typeBackground";
 
 class AdvancedSearch extends Component {
   state = {
-    generation: 1,
+    generation: "1",
     data: [],
     name: "",
     species: [],
     types: [],
+    moves: [],
   };
   handleCheck = (e) => {
     const { value } = e.target;
@@ -32,21 +33,47 @@ class AdvancedSearch extends Component {
     const { data } = await API.getRegion(generation);
     const species = data.pokemon_species.map((pokemon) => pokemon.name);
     const types = data.types.map((type) => type.name);
+    const moves = data.moves.map((move) => move.name);
+
     this.setState({
       data: data,
       name: data.main_region.name,
       species: species,
       types: types,
+      moves: moves,
     });
   }
 
+  async componentDidUpdate(prevState) {
+    {
+      const { generation: prev } = prevState;
+      const { generation: post } = this.state;
+      if (post !== prev) {
+        const API = new APIHandler("https://pokeapi.co/api/v2/");
+        const { generation } = this.state;
+        const { data } = await API.getRegion(generation);
+        const species = data.pokemon_species.map((pokemon) => pokemon.name);
+        const types = data.types.map((type) => type.name);
+        const moves = data.moves.map((move) => move.name);
+
+        this.setState({
+          data: data,
+          name: data.main_region.name,
+          species: species,
+          types: types,
+          moves: moves,
+        });
+      }
+    }
+  }
+
   render() {
-    const { generation, data, name, species, types } = this.state;
+    const { generation, data, name, species, types, moves } = this.state;
     return (
       <Box minHeight="100vh">
         <Container>
-          {console.log(data)}
-          <StyledTitle>Advanced Search</StyledTitle>
+        <Box minHeight="100vh">
+          <StyledTitle>Search Genaration</StyledTitle>
           <AdvancedSearchForm handleCheck={this.handleCheck} />
           <AdvancedSubtitle>Pokemons from {name}</AdvancedSubtitle>
           <Grid
@@ -59,8 +86,9 @@ class AdvancedSearch extends Component {
               <Card key={pokemon} name={pokemon} />
             ))}
           </Grid>
+          </Box>
           <AdvancedSubtitle>
-            All types from generation {generation}
+            Added types from generation {generation}
           </AdvancedSubtitle>
           <TypeDiv>
             <Grid
@@ -69,16 +97,33 @@ class AdvancedSearch extends Component {
               justifyContent="center"
               alignItems="center"
             >
-              {types.map((type) => (
-                <StyledType
-                  style={{ backgroundColor: `${typeBackground[type]}` }}
-                >
-                  {type}
-                </StyledType>
-              ))}
+              {types.length > 0 ? (
+                types.map((type, i) => (
+                  <StyledType
+                    key={i}
+                    style={{ backgroundColor: `${typeBackground[type]}` }}
+                  >
+                    {type}
+                  </StyledType>
+                ))
+              ) : (
+                <StyledMoves>None</StyledMoves>
+              )}
             </Grid>
           </TypeDiv>
-          <TypeDiv></TypeDiv>
+          <AdvancedSubtitle>
+            All moves from generation {generation}
+          </AdvancedSubtitle>
+          <Grid
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+          >
+            {moves.map((move, i) => (
+              <StyledMoves key={i}>{move}</StyledMoves>
+            ))}
+          </Grid>
         </Container>
       </Box>
     );

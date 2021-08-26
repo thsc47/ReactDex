@@ -17,6 +17,7 @@ import {
   StyledContainerTitle,
   InfoCard,
   CardContainer,
+  EvoInfoContainer,
   InfoLabelDisplay,
 } from "../UI";
 import { Box, Container, Grid } from "@material-ui/core";
@@ -151,7 +152,7 @@ class PokemonDetails extends Component {
                 <StyledContainerTitle>Basic Information:</StyledContainerTitle>
                 <CardContainer>
                   <InfoCard>
-                    <InfoLabel>Heigh:</InfoLabel>
+                    <InfoLabel>Height:</InfoLabel>
                     {pokemon.height > 0 ? (
                       <InfoLabelDisplay>
                         {pokemon.height / 10} m{" "}
@@ -223,7 +224,7 @@ class PokemonDetails extends Component {
                 beginAtZero: true,
               }}
             />
-            <InfoContainer>
+            <EvoInfoContainer>
               <StyledContainerTitle>Evolution Chain</StyledContainerTitle>
               <CardContainer>
                 {evoChain.length > 1 ? (
@@ -236,7 +237,7 @@ class PokemonDetails extends Component {
                   </InfoLabel>
                 )}
               </CardContainer>
-            </InfoContainer>
+            </EvoInfoContainer>
           </Grid>
         </Container>
       </Box>

@@ -4,6 +4,7 @@ import styled from "styled-components";
 //Components from Navbar
 export const Header = styled.header`
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 30px 10%;
@@ -84,9 +85,9 @@ export const StyledDiv = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2px;
+  border: 1px solid  ${({ theme }) => theme.text};
   margin: 5px;
   align-content: center;
-  border: 1px solid black;
   border-radius: 4px;
   :hover {
     border: 1px solid lightgrey;
@@ -205,6 +206,18 @@ export const StyledImd420 = styled.img`
 `;
 
 export const InfoContainer = styled.section`
+  background-color: ${({ theme }) => theme.inside};
+  color: ${({ theme }) => theme.text};
+  height: 460px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 15px;
+  @media (max-width: 600px) {
+    height: 100%;
+  }
+`;
+
+export const EvoInfoContainer = styled.section`
   background-color: ${({ theme }) => theme.inside};
   color: ${({ theme }) => theme.text};
   height: 460px;
@@ -410,12 +423,17 @@ export const AdvancedSubtitle = styled.h2`
   margin-bottom: 15px;
   text-transform: capitalize;
   font-size: 36px;
+  @media (max-width: 600px) {
+    padding: 0.5em;
+    text-align:center;
+  }
 `;
 
 export const StyledMoves = styled.div`
   margin: 5px;
   padding: 3px;
   font-weight: bold;
+  background-color: ${({ theme }) => theme.inside};
   color: ${({ theme }) => theme.text};
   border: 1px solid #f1f1f1;
   border-radius: 15px;
@@ -424,7 +442,7 @@ export const StyledMoves = styled.div`
 //Components from footer
 export const StyledFooter = styled.footer`
   padding: 20px;
-  background: lightgray;
+  background: litghgrey;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
