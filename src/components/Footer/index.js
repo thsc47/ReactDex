@@ -19,7 +19,7 @@ const Footer = () => {
         <StyledFooterTitle> Gonna catch them all!</StyledFooterTitle>
       </StyledFooterDiv>
       <StyledFooterDiv>
-        <a href="https://pokeapi.co/">
+        <a href="https://github.com/thsc47/ReactDex">
           <StyledFooterIcons src={GitHub} />
         </a>
         <a href="https://pokeapi.co/">
