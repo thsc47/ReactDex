@@ -145,7 +145,7 @@ class PokemonDetails extends Component {
               <StyledContainerTitle>Basic Information:</StyledContainerTitle>
               <CardContainer>
                 <InfoCard>
-                  <InfoLabel>Heigh:</InfoLabel>
+                  <InfoLabel>Height:</InfoLabel>
                   {pokemon.height > 0 ? (
                     <InfoLabelDisplay>
                       {pokemon.height / 10} m{" "}
