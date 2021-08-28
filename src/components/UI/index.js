@@ -85,7 +85,7 @@ export const StyledDiv = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2px;
-  border: 1px solid  ${({ theme }) => theme.text};
+  border: 1px solid ${({ theme }) => theme.text};
   margin: 5px;
   align-content: center;
   border-radius: 4px;
@@ -409,7 +409,7 @@ export const StyledSelect = styled.select`
   margin: 15px;
   padding: 1em 1.1em;
   border-radius: 15px;
-  background: ${({ theme }) => theme.body};
+  background: ${({ theme }) => theme.inside};
   color: ${({ theme }) => theme.text};
   @media (max-width: 600px) {
     padding: 1em;
@@ -425,7 +425,7 @@ export const AdvancedSubtitle = styled.h2`
   font-size: 36px;
   @media (max-width: 600px) {
     padding: 0.5em;
-    text-align:center;
+    text-align: center;
   }
 `;
 
@@ -439,7 +439,52 @@ export const StyledMoves = styled.div`
   border-radius: 15px;
 `;
 
+//Components from About
+export const StyledAboutTitle = styled.h1`
+  transform: translate(0%, 50%);
+  color: ${({ theme }) => theme.text};
+  cursor: default;
+  font-size: 42px;
+  text-align: center;
+  text-transform: capitalize;
+`;
+
+export const StyledAboutSubtitle = styled.p`
+  color: ${({ theme }) => theme.text};
+  cursor: default;
+  font-size: 16px;
+  text-align: center;
+`;
+
+export const Ash = styled.img`
+  transform: translate(10%, 0%);
+  width: 270‬px;
+  height: 643px;
+  @media (max-width: 600px) {
+    width: 0‬px;
+    height: 0px;
+    transform: translate(0%, 0%);
+  }
+`;
+export const StyledCardAbout = styled.div`
+  height: 350px;
+  width: 600px;
+  padding: 5px;
+  background-color: ${({ theme }) => theme.inside};
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  @media (max-width: 600px) {
+    height: 175px;
+    width: 300px;
+  }
+`;
+
 //Components from footer
+
 export const StyledFooter = styled.footer`
   padding: 20px;
   background: litghgrey;
@@ -459,14 +504,17 @@ export const StyledFooterLogo = styled.img`
 export const StyledFooterTitle = styled.h4`
   color: #396bba;
   text-align: center;
-  margin-left:25px;
+  margin-left: 25px;
+  @media (max-width: 600px) {
+    font-size: 0px;
+  }
 `;
 
 export const StyledFooterIcons = styled.img`
   width: 36px;
   height: 36px;
-  margin-right:50px;
-  margin-top:10px;
+  margin-right: 50px;
+  margin-top: 10px;
 `;
 
 export const StyledFooterDiv = styled.div`

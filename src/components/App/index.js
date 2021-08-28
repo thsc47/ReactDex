@@ -15,6 +15,7 @@ import Home from "../Home";
 import PokemonDetails from "../PokemonDetails";
 import MyParty from "../MyParty"
 import Generations from "../Generations";
+import About from "../About";
 import  Error404  from "../Error404";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path = "/details/:name" component = {PokemonDetails} />
           <Route path = "/my-party" component = {MyParty} exact/>
           <Route path = "/generations" component = {Generations} exact/>
+          <Route path = "/about" component = {About} exact/>
           <Route  component = {Error404} />
         </Switch>
         < Footer />
