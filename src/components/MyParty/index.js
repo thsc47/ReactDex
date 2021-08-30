@@ -15,7 +15,7 @@ class MyParty extends Component {
 
   clearParty = () => {
     const { party } = this.state;
-    party.splice(0, 5);
+    party.splice(0, 6);
     this.setState({ party: party });
     localStorage.setItem("party-member", JSON.stringify(party));
   };
