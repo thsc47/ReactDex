@@ -4,6 +4,11 @@ This is a project aimed at the completion of IronHack's module 2. We use the Rea
 The API used was [PokeAPI](https://pokeapi.co/)
 , a public and free RESTFULL API that compiles all data from all generations of pokemons released. With this data we compile the base data of each pokemon to use in our application.
 
+[You can play here](https://react-dex-ironhack.herokuapp.com/)
+
+[Your apresetation is here](https://docs.google.com/presentation/d/11ak-s2ICKqyqhHT8zUG0A9d4wjGBtzb1Nt84JNQxJP4/edit)
+
+
 ## Usage
 ###  Navbar
 The Navbar provides links to all components of the application and have the theme switcher button
